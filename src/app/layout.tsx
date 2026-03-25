@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Albert_Sans, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -7,16 +7,33 @@ import { business, seoKeywords, siteUrl, weeklySchedule } from "@/lib/site-data"
 
 import "./globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
+const youngSerif = localFont({
+  src: "../assets/fonts/YoungSerif-Regular.ttf",
+  display: "swap",
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
 });
 
-const albertSans = Albert_Sans({
-  subsets: ["latin"],
+const instrumentSans = localFont({
+  src: [
+    {
+      path: "../assets/fonts/InstrumentSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/InstrumentSans-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../assets/fonts/InstrumentSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  display: "swap",
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
 });
 
 const structuredData = {
@@ -51,19 +68,19 @@ const structuredData = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `Boulangerie à ${business.city} | ${business.name}`,
+    default: `Boulangerie artisanale à ${business.city} | ${business.name}`,
     template: `%s | ${business.name}`,
   },
   description:
-    "Boulangerie artisanale à Saint-Pol-de-Léon : pains traditionnels, viennoiseries maison, pâtisseries bretonnes et contact rapide.",
+    "Boulangerie artisanale à Saint-Pol-de-Léon : pains du quotidien, viennoiseries maison, pause déjeuner, pâtisseries gourmandes et contact rapide.",
   alternates: {
     canonical: "/",
   },
   keywords: seoKeywords,
   openGraph: {
-    title: `Boulangerie à ${business.city} | ${business.name}`,
+    title: `Boulangerie artisanale à ${business.city} | ${business.name}`,
     description:
-      "Pains traditionnels, viennoiseries maison, pause déjeuner et pâtisseries gourmandes à Saint-Pol-de-Léon.",
+      "Une vitrine locale et gourmande pour découvrir pains, viennoiseries, pâtisseries et créations sur commande à Saint-Pol-de-Léon.",
     url: siteUrl,
     siteName: business.name,
     locale: "fr_FR",
@@ -90,13 +107,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${fraunces.variable} ${albertSans.variable}`} lang="fr">
+    <html className={`${youngSerif.variable} ${instrumentSans.variable}`} lang="fr">
       <body>
+        <a className="skip-link" href="#main-content">
+          Aller au contenu
+        </a>
+
         <div className="site-shell">
           <Header />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
+
+          <div className="mobile-quick-actions" aria-label="Actions rapides">
+            <a className="mobile-quick-actions__item" href={business.phoneHref}>
+              Appeler
+            </a>
+            <a
+              className="mobile-quick-actions__item"
+              href={business.mapUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Itinéraire
+            </a>
+            <a className="mobile-quick-actions__item" href="#contact">
+              Message
+            </a>
+          </div>
+
           <Footer />
         </div>
+
         <script
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),

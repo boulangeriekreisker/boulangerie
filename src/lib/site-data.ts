@@ -1,20 +1,20 @@
 import type { StaticImageData } from "next/image";
 
-import facadeImage from "@/assets/kreisker/facade-kreisker.jpg";
-import vitrinePatisseriesImage from "@/assets/kreisker/vitrine-patisseries.jpg";
-import petitsGateauxImage from "@/assets/kreisker/petits-gateaux-vitrine.jpg";
-import pavlovaImage from "@/assets/kreisker/pavlova-fruits-rouges.jpg";
 import boucheesSaleesImage from "@/assets/kreisker/bouchees-salees.jpg";
-import sandwichesSaumonImage from "@/assets/kreisker/sandwiches-saumon.jpg";
+import collageViennoiseriesImage from "@/assets/kreisker/collage-viennoiseries.jpg";
+import facadeImage from "@/assets/kreisker/facade-kreisker.jpg";
 import gateauAnanasImage from "@/assets/kreisker/gateau-ananas-anniversaire.jpg";
 import gateauChantillyImage from "@/assets/kreisker/gateau-chantilly-blanc.jpg";
-import presentoirGateauxImage from "@/assets/kreisker/presentoir-gateaux.jpg";
 import gateauFraisePartImage from "@/assets/kreisker/gateau-fraise-part.jpg";
-import collageViennoiseriesImage from "@/assets/kreisker/collage-viennoiseries.jpg";
+import pavlovaImage from "@/assets/kreisker/pavlova-fruits-rouges.jpg";
+import petitsGateauxImage from "@/assets/kreisker/petits-gateaux-vitrine.jpg";
 import pieceMonteeChouxDetailImage from "@/assets/kreisker/piece-montee-choux-detail.jpg";
-import tarteFruitsCreationImage from "@/assets/kreisker/tarte-fruits-creation.png";
 import pieceMonteeChouxImage from "@/assets/kreisker/piece-montee-choux.png";
 import pieceMonteeCommunionImage from "@/assets/kreisker/piece-montee-communion.png";
+import presentoirGateauxImage from "@/assets/kreisker/presentoir-gateaux.jpg";
+import sandwichesSaumonImage from "@/assets/kreisker/sandwiches-saumon.jpg";
+import tarteFruitsCreationImage from "@/assets/kreisker/tarte-fruits-creation.png";
+import vitrinePatisseriesImage from "@/assets/kreisker/vitrine-patisseries.jpg";
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://boulangerie-du-kreisker.vercel.app";
@@ -27,7 +27,7 @@ export const business = {
   tagline:
     "La Boulangerie du Kreisker, votre boulangerie artisanale à Saint-Pol-de-Léon",
   description:
-    "Boulangerie artisanale à Saint-Pol-de-Léon : pains traditionnels, viennoiseries maison, pause déjeuner et pâtisseries gourmandes au 10 rue Cadiou.",
+    "Boulangerie artisanale à Saint-Pol-de-Léon : pains du quotidien, viennoiseries maison, pause déjeuner, pâtisseries gourmandes et créations sur commande au 10 rue Cadiou.",
   phoneDisplay: "02 98 69 02 19",
   phoneHref: "tel:+33298690219",
   addressLine: "10 rue Cadiou",
@@ -45,6 +45,7 @@ export const business = {
 } as const;
 
 export const navigation = [
+  { href: "/#maison", label: "La maison" },
   { href: "/#gamme", label: "La gamme" },
   { href: "/#selection", label: "Au comptoir" },
   { href: "/#creations", label: "Créations" },
@@ -53,9 +54,9 @@ export const navigation = [
 ];
 
 export const heroHighlights = [
-  "Boulangerie Saint-Pol-de-Léon",
-  "Viennoiseries maison",
-  "Pâtisseries et commandes",
+  "Pain artisanal et viennoiseries maison",
+  "Pause déjeuner rapide au centre-ville",
+  "Pâtisseries et créations sur commande",
 ];
 
 export type VisualCard = {
@@ -66,6 +67,26 @@ export type VisualCard = {
   objectPosition?: string;
 };
 
+export type QuickFact = {
+  label: string;
+  value: string;
+};
+
+export const quickFacts: QuickFact[] = [
+  {
+    label: "Horaires",
+    value: "Mar. au sam. 07:00-19:00 · dim. 07:00-12:30",
+  },
+  {
+    label: "Adresse",
+    value: "10 rue Cadiou, Saint-Pol-de-Léon",
+  },
+  {
+    label: "Réputation",
+    value: "Photos produits, avis locaux et accès direct",
+  },
+];
+
 export const heroGallery: VisualCard[] = [
   {
     title: "La vitrine du moment",
@@ -75,7 +96,7 @@ export const heroGallery: VisualCard[] = [
     objectPosition: "50% 45%",
   },
   {
-    title: "Au cœur de Saint-Pol-de-Léon",
+    title: "Au coeur de Saint-Pol-de-Léon",
     caption: "Une adresse de quartier facile à repérer au 10 rue Cadiou.",
     image: facadeImage,
     alt: "Façade en pierre de la Boulangerie du Kreisker à Saint-Pol-de-Léon",
@@ -87,6 +108,53 @@ export const heroGallery: VisualCard[] = [
     image: petitsGateauxImage,
     alt: "Assortiment de petits gâteaux et entremets en vitrine",
     objectPosition: "50% 45%",
+  },
+];
+
+export const houseFeature = {
+  title: "Une façade de quartier, une vitrine qui parle tout de suite",
+  caption:
+    "Le site met en valeur la maison comme on la perçoit sur place : simple à repérer, généreuse visuellement et pensée pour un passage rapide.",
+  image: facadeImage,
+  alt: "Devanture en pierre de la Boulangerie du Kreisker",
+  objectPosition: "50% 52%",
+} as const;
+
+export type NarrativeCard = {
+  title: string;
+  text: string;
+};
+
+export const houseNotes: NarrativeCard[] = [
+  {
+    title: "Une adresse claire",
+    text:
+      "Le 10 rue Cadiou et la façade en pierre deviennent des repères immédiats dès la première visite sur mobile.",
+  },
+  {
+    title: "Une offre lisible",
+    text:
+      "Le parcours raconte la boulangerie comme une journée réelle : matin, déjeuner, dessert, puis commandes festives.",
+  },
+  {
+    title: "Une présence locale crédible",
+    text:
+      "Les visuels réels, les horaires, l'appel direct, Facebook et TripAdvisor travaillent ensemble au service de la confiance.",
+  },
+];
+
+export const serviceMoments: NarrativeCard[] = [
+  {
+    title: "Le matin",
+    text: "Viennoiseries maison, premières envies sucrées et repères du quotidien.",
+  },
+  {
+    title: "Le midi",
+    text: "Une pause déjeuner rapide à comprendre, pratique à emporter et visible en un coup d'oeil.",
+  },
+  {
+    title: "Les grands jours",
+    text: "Gâteaux, entremets et pièces montées qui montrent que la maison sait aussi accompagner les événements.",
   },
 ];
 

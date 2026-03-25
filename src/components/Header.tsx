@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a className="brand-mark" href="#top">
+        <a aria-label={`Retour en haut - ${business.name}`} className="brand-mark" href="#top">
           <span className="brand-mark__crest">K</span>
           <span className="brand-mark__text">
             <strong>{business.name}</strong>

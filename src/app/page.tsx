@@ -8,10 +8,14 @@ import {
   celebrationGallery,
   heroGallery,
   heroHighlights,
+  houseFeature,
+  houseNotes,
+  quickFacts,
+  selectionGallery,
+  serviceMoments,
   showcaseCards,
   trustSignals,
   weeklySchedule,
-  selectionGallery,
 } from "@/lib/site-data";
 
 export default function HomePage() {
@@ -25,18 +29,26 @@ export default function HomePage() {
             <p className="eyebrow">Saint-Pol-de-Léon · artisanat · Bretagne</p>
             <h1>{business.tagline}</h1>
             <p className="hero__lede">
-              Pains traditionnels, viennoiseries maison, pause déjeuner et
-              pâtisseries gourmandes, préparés chaque jour au cœur de
-              Saint-Pol-de-Léon.
+              Pains du quotidien, viennoiseries maison, pause déjeuner et pâtisseries gourmandes,
+              préparés chaque jour au coeur de Saint-Pol-de-Léon.
             </p>
 
             <div className="hero__actions">
               <a className="button button--primary" href={business.phoneHref}>
                 Appeler la boulangerie
               </a>
-              <a className="button button--ghost" href="#gamme">
-                Voir la gamme
+              <a className="button button--ghost" href="#maison">
+                Découvrir la maison
               </a>
+            </div>
+
+            <div className="hero-proof-grid">
+              {quickFacts.map((fact) => (
+                <article className="hero-proof" key={fact.label}>
+                  <span>{fact.label}</span>
+                  <strong>{fact.value}</strong>
+                </article>
+              ))}
             </div>
 
             <div className="hero__meta">
@@ -91,7 +103,7 @@ export default function HomePage() {
           </aside>
         </div>
 
-        <div className="marquee">
+        <div className="marquee" aria-label="Points forts">
           {heroHighlights.map((highlight) => (
             <span className="marquee__item" key={highlight}>
               {highlight}
@@ -100,11 +112,70 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section section--house" id="maison">
+        <SectionTitle
+          eyebrow="La maison"
+          intro="Une présence locale crédible se joue en quelques secondes : façade reconnaissable, offre lisible, informations pratiques visibles et photos qui donnent réellement faim."
+          title="Une vitrine locale pensée comme une vraie visite de quartier"
+        />
+
+        <div className="house-layout">
+          <figure className="house-figure">
+            <div className="house-figure__media">
+              <Image
+                alt={houseFeature.alt}
+                className="house-figure__image"
+                fill
+                placeholder="blur"
+                priority
+                sizes="(max-width: 1080px) 100vw, 42vw"
+                src={houseFeature.image}
+                style={{ objectPosition: houseFeature.objectPosition }}
+              />
+            </div>
+            <figcaption className="house-figure__caption">
+              <strong>{houseFeature.title}</strong>
+              <span>{houseFeature.caption}</span>
+            </figcaption>
+          </figure>
+
+          <div className="house-stack">
+            <article className="info-card info-card--accent house-story">
+              <p className="eyebrow">Identité locale</p>
+              <h2>Une boulangerie de quartier pensée pour donner envie de venir.</h2>
+              <p>
+                Le site reprend les informations utiles avant tout : horaires, adresse, appel,
+                itinéraire, puis laisse les visuels raconter la générosité du comptoir et des
+                créations sur commande.
+              </p>
+
+              <div className="house-note-list">
+                {houseNotes.map((note) => (
+                  <article className="house-note" key={note.title}>
+                    <strong>{note.title}</strong>
+                    <p>{note.text}</p>
+                  </article>
+                ))}
+              </div>
+            </article>
+
+            <div className="moment-grid">
+              {serviceMoments.map((moment) => (
+                <article className="moment-card" key={moment.title}>
+                  <span>{moment.title}</span>
+                  <p>{moment.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section" id="gamme">
         <SectionTitle
           eyebrow="La gamme"
-          intro="Du petit déjeuner au dessert, la page met en avant ce qui donne envie d'entrer, d'appeler ou de passer commande."
-          title="Une vitrine gourmande pensée pour convertir vite"
+          intro="Du petit déjeuner au dessert, la page met en avant ce qui donne envie d'entrer, d'appeler ou de passer commande sans détour."
+          title="Une lecture claire entre fournil du matin, déjeuner rapide et vitrine sucrée"
         />
 
         <div className="showcase-grid">
@@ -140,8 +211,8 @@ export default function HomePage() {
       <section className="section" id="selection">
         <SectionTitle
           eyebrow="Au comptoir"
-          intro="Textures, fruits, crème, feuilletage et coups d'œil de vitrine : tout ce qu'il faut pour rendre le site vivant dès maintenant."
-          title="Une sélection du jour qui donne envie de pousser la porte"
+          intro="Textures, fruits, crème, feuilletage et coups d'oeil de vitrine : tout ce qu'il faut pour rendre le site vivant dès maintenant."
+          title="Une sélection visuelle qui fait exister la boutique avant même la visite"
         />
 
         <div className="gallery-wall">
@@ -170,8 +241,8 @@ export default function HomePage() {
       <section className="section section--contrast" id="creations">
         <SectionTitle
           eyebrow="Créations"
-          intro="Gâteaux de commande, pièces montées et desserts qui marquent les anniversaires, les communions et les moments qu'on veut rendre mémorables."
-          title="Des créations qui prolongent l'expérience au-delà du quotidien"
+          intro="Gâteaux de commande, pièces montées et desserts qui marquent les anniversaires, les communions et les moments que l'on veut rendre mémorables."
+          title="Des créations qui prolongent l'expérience bien au-delà du quotidien"
         />
 
         <div className="celebration-layout">
@@ -179,9 +250,9 @@ export default function HomePage() {
             <p className="eyebrow">Storytelling visuel</p>
             <h2>Du fournil du matin jusqu&apos;aux grandes occasions.</h2>
             <p>
-              Le site raconte la journée de la boulangerie : le passage du matin,
-              la pause déjeuner, le dessert du week-end et les créations
-              festives qui accompagnent les grands moments.
+              La page raconte la boulangerie comme un rythme réel : le passage du matin, la pause
+              déjeuner, le dessert du week-end et les créations festives qui accompagnent les
+              grands moments.
             </p>
             <ul className="checklist">
               <li>Produits du quotidien visibles immédiatement</li>
@@ -280,8 +351,8 @@ export default function HomePage() {
           <p className="eyebrow">Contact rapide</p>
           <h2>Un message simple, sans réservation ni parcours compliqué.</h2>
           <p>
-            Pour une demande rapide, un renseignement ou une commande à
-            préciser, le formulaire reste court et va à l&apos;essentiel.
+            Pour une demande rapide, un renseignement ou une commande à préciser, le formulaire
+            reste court et va à l&apos;essentiel.
           </p>
           <ul className="checklist">
             <li>Nom, email, message</li>

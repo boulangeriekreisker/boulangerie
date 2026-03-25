@@ -8,8 +8,8 @@ export function Footer() {
           <p className="eyebrow">Boulangerie artisanale</p>
           <h2 className="site-footer__title">{business.name}</h2>
           <p className="site-footer__copy">
-            Une vitrine locale, rapide et chaleureuse, pensée pour donner envie
-            de venir en boutique dès la première seconde.
+            Une vitrine locale, gourmande et rapide, pensée pour transformer une visite mobile en
+            appel, en itinéraire ou en passage en boutique.
           </p>
         </div>
 
