@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="La Boulangerie du Kreisker">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f6ead5" />
+      <stop offset="55%" stop-color="#f9f4eb" />
+      <stop offset="100%" stop-color="#e5efec" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#bf5d2a" />
+      <stop offset="100%" stop-color="#d98c48" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" rx="40" />
+  <circle cx="1015" cy="118" fill="#ead6b4" opacity="0.65" r="120" />
+  <circle cx="920" cy="520" fill="#244b53" opacity="0.12" r="190" />
+  <rect fill="#fffaf2" height="404" opacity="0.92" rx="48" width="710" x="84" y="112" />
+  <rect fill="#1a120d" height="140" opacity="0.95" rx="34" width="290" x="850" y="350" />
+  <rect fill="url(#accent)" height="120" rx="28" width="120" x="850" y="160" />
+  <text fill="#ffffff" font-family="Georgia, serif" font-size="72" font-weight="700" x="883" y="240">K</text>
+  <text fill="#294e5d" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="6" x="84" y="190">
+    SAINT-POL-DE-LEON
+  </text>
+  <text fill="#19120f" font-family="Georgia, serif" font-size="82" font-weight="700" x="84" y="288">
+    La Boulangerie
+  </text>
+  <text fill="#19120f" font-family="Georgia, serif" font-size="82" font-weight="700" x="84" y="372">
+    du Kreisker
+  </text>
+  <text fill="#5e554e" font-family="Arial, sans-serif" font-size="30" x="84" y="438">
+    Vitrine locale rapide, elegante et orientee conversion.
+  </text>
+  <text fill="#f7cd8a" font-family="Arial, sans-serif" font-size="24" letter-spacing="4" x="886" y="412">
+    NEXT.JS
+  </text>
+  <text fill="#f7cd8a" font-family="Arial, sans-serif" font-size="24" letter-spacing="4" x="886" y="450">
+    JAMSTACK
+  </text>
+</svg>

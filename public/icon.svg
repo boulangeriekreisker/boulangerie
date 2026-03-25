@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kreisker">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#bf5d2a" />
+      <stop offset="100%" stop-color="#d98c48" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#f7f2e9" />
+  <path
+    d="M15 47V17h8v12.2L34.3 17h9.8L31.7 30.8 45.8 47h-10L23 31.9V47z"
+    fill="url(#g)"
+  />
+</svg>
