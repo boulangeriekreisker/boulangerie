@@ -22,7 +22,7 @@ export function ContactForm() {
 
     setState({
       kind: "sending",
-      message: "Envoi en cours…",
+      message: "Envoi en cours...",
     });
 
     try {
@@ -101,7 +101,7 @@ export function ContactForm() {
 
       <div className="field-actions">
         <button className="button button--primary" disabled={state.kind === "sending"} type="submit">
-          {state.kind === "sending" ? "Envoi…" : "Envoyer le message"}
+          {state.kind === "sending" ? "Envoi..." : "Envoyer le message"}
         </button>
       </div>
 

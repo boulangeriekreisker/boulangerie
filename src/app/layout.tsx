@@ -51,17 +51,19 @@ const structuredData = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${business.name} | Boulangerie à ${business.city}`,
+    default: `Boulangerie à ${business.city} | ${business.name}`,
     template: `%s | ${business.name}`,
   },
-  description: business.description,
+  description:
+    "Boulangerie artisanale à Saint-Pol-de-Léon : pains traditionnels, viennoiseries maison, pâtisseries bretonnes et contact rapide.",
   alternates: {
     canonical: "/",
   },
   keywords: seoKeywords,
   openGraph: {
-    title: `${business.name} | Boulangerie à ${business.city}`,
-    description: business.description,
+    title: `Boulangerie à ${business.city} | ${business.name}`,
+    description:
+      "Pains traditionnels, viennoiseries maison, pause déjeuner et pâtisseries gourmandes à Saint-Pol-de-Léon.",
     url: siteUrl,
     siteName: business.name,
     locale: "fr_FR",

@@ -1,3 +1,21 @@
+import type { StaticImageData } from "next/image";
+
+import facadeImage from "@/assets/kreisker/facade-kreisker.jpg";
+import vitrinePatisseriesImage from "@/assets/kreisker/vitrine-patisseries.jpg";
+import petitsGateauxImage from "@/assets/kreisker/petits-gateaux-vitrine.jpg";
+import pavlovaImage from "@/assets/kreisker/pavlova-fruits-rouges.jpg";
+import boucheesSaleesImage from "@/assets/kreisker/bouchees-salees.jpg";
+import sandwichesSaumonImage from "@/assets/kreisker/sandwiches-saumon.jpg";
+import gateauAnanasImage from "@/assets/kreisker/gateau-ananas-anniversaire.jpg";
+import gateauChantillyImage from "@/assets/kreisker/gateau-chantilly-blanc.jpg";
+import presentoirGateauxImage from "@/assets/kreisker/presentoir-gateaux.jpg";
+import gateauFraisePartImage from "@/assets/kreisker/gateau-fraise-part.jpg";
+import collageViennoiseriesImage from "@/assets/kreisker/collage-viennoiseries.jpg";
+import pieceMonteeChouxDetailImage from "@/assets/kreisker/piece-montee-choux-detail.jpg";
+import tarteFruitsCreationImage from "@/assets/kreisker/tarte-fruits-creation.png";
+import pieceMonteeChouxImage from "@/assets/kreisker/piece-montee-choux.png";
+import pieceMonteeCommunionImage from "@/assets/kreisker/piece-montee-communion.png";
+
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://boulangerie-du-kreisker.vercel.app";
 
@@ -5,10 +23,11 @@ export const business = {
   name: "La Boulangerie du Kreisker",
   shortName: "Kreisker",
   city: "Saint-Pol-de-Léon",
-  region: "Finistère, Bretagne",
-  tagline: "La meilleure boulangerie de Saint-Pol-de-Léon",
+  region: "Finistère nord",
+  tagline:
+    "La Boulangerie du Kreisker, votre boulangerie artisanale à Saint-Pol-de-Léon",
   description:
-    "Boulangerie artisanale à Saint-Pol-de-Léon, reconnue pour ses pains traditionnels, ses viennoiseries maison et ses pâtisseries bretonnes.",
+    "Boulangerie artisanale à Saint-Pol-de-Léon : pains traditionnels, viennoiseries maison, pause déjeuner et pâtisseries gourmandes au 10 rue Cadiou.",
   phoneDisplay: "02 98 69 02 19",
   phoneHref: "tel:+33298690219",
   addressLine: "10 rue Cadiou",
@@ -22,76 +41,194 @@ export const business = {
   tripadvisorUrl:
     "https://www.tripadvisor.fr/Restaurant_Review-g660194-d13948092-Reviews-Boulangerie_du_Kreisker-Saint_Pol_de_Leon_Finistere_Brittany.html",
   sourceNote:
-    "Horaires et informations pratiques préremplis à partir de votre capture et de sources publiques consultées le 25 mars 2026. À valider avec les contenus officiels du dossier client.",
+    "Horaires et informations pratiques préremplis à partir de votre capture et de sources publiques consultées le 25 mars 2026. À valider avant mise en production.",
 } as const;
 
 export const navigation = [
   { href: "/#gamme", label: "La gamme" },
+  { href: "/#selection", label: "Au comptoir" },
+  { href: "/#creations", label: "Créations" },
   { href: "/#infos", label: "Infos pratiques" },
   { href: "/#contact", label: "Contact" },
 ];
 
 export const heroHighlights = [
-  "Pain artisanal",
+  "Boulangerie Saint-Pol-de-Léon",
   "Viennoiseries maison",
-  "Pâtisseries bretonnes",
+  "Pâtisseries et commandes",
 ];
 
-export const servicePromises = [
-  {
-    title: "Jamstack ultra-rapide",
-    text: "La page est pensée pour être servie comme un contenu statique depuis le CDN, avec des temps de chargement très bas même pendant les pics saisonniers.",
-  },
-  {
-    title: "Référencement local soigné",
-    text: "Le contenu, les horaires, l'adresse et les données structurées sont préparés pour performer sur les recherches locales autour de Saint-Pol-de-Léon.",
-  },
-  {
-    title: "Contact sans friction",
-    text: "Le formulaire envoie un message via une fonction serverless sans imposer de base de données ni de tunnel de réservation lourd.",
-  },
-];
-
-export type ProductCategory = {
+export type VisualCard = {
   title: string;
-  eyebrow: string;
-  description: string;
-  items: string[];
+  caption: string;
+  image: StaticImageData;
+  alt: string;
+  objectPosition?: string;
 };
 
-export const productCategories: ProductCategory[] = [
+export const heroGallery: VisualCard[] = [
   {
-    title: "Pains spéciaux",
-    eyebrow: "Four du matin",
-    description:
-      "Une vitrine concentrée sur la tradition, les pains de campagne et les pains du moment, avec une présence forte des produits qui font revenir chaque jour.",
-    items: ["Tradition", "Pain de campagne", "Pain spécial du moment"],
+    title: "La vitrine du moment",
+    caption: "Entremets, fruits, chocolat et couleurs de saison.",
+    image: vitrinePatisseriesImage,
+    alt: "Vitrine de pâtisseries colorées à la Boulangerie du Kreisker",
+    objectPosition: "50% 45%",
   },
   {
-    title: "Viennoiseries maison",
-    eyebrow: "Doré minute",
-    description:
-      "Croissants, pains au chocolat et feuilletages de comptoir portés par une mise en page très visuelle et mobile-first.",
-    items: ["Croissant", "Pain au chocolat", "Croissant amande"],
+    title: "Au cœur de Saint-Pol-de-Léon",
+    caption: "Une adresse de quartier facile à repérer au 10 rue Cadiou.",
+    image: facadeImage,
+    alt: "Façade en pierre de la Boulangerie du Kreisker à Saint-Pol-de-Léon",
+    objectPosition: "50% 50%",
   },
   {
-    title: "Pâtisseries bretonnes",
-    eyebrow: "Signature locale",
+    title: "Le comptoir gourmand",
+    caption: "Petits gâteaux, fruits rouges et desserts de vitrine.",
+    image: petitsGateauxImage,
+    alt: "Assortiment de petits gâteaux et entremets en vitrine",
+    objectPosition: "50% 45%",
+  },
+];
+
+export type ShowcaseCard = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: string[];
+  image: StaticImageData;
+  alt: string;
+  objectPosition?: string;
+};
+
+export const showcaseCards: ShowcaseCard[] = [
+  {
+    eyebrow: "Le matin",
+    title: "Viennoiseries et premières fournées",
     description:
-      "Une sélection qui installe immédiatement l'ancrage breton de la maison, avec le kouign-amann en vedette éditoriale dès que les visuels définitifs arrivent.",
-    items: ["Kouign-amann", "Far pruneaux", "Éclair chocolat"],
+      "Croissants, pains au chocolat et gourmandises du matin pour démarrer la journée avec du goût et du rythme.",
+    items: ["Croissants dorés", "Pains au chocolat", "Premières fournées"],
+    image: collageViennoiseriesImage,
+    alt: "Collage de croissants, pâtisseries et viennoiseries de la boulangerie",
+    objectPosition: "50% 42%",
+  },
+  {
+    eyebrow: "Le midi",
+    title: "Pause déjeuner et comptoir salé",
+    description:
+      "Sandwiches généreux, saumon fumé et bouchées salées pour un déjeuner rapide, frais et très lisible sur mobile.",
+    items: ["Sandwiches au saumon", "Bouchées salées", "Pause déjeuner rapide"],
+    image: sandwichesSaumonImage,
+    alt: "Sandwiches garnis au saumon fumé en vitrine",
+    objectPosition: "50% 50%",
+  },
+  {
+    eyebrow: "Le goût sucré",
+    title: "Pâtisseries et desserts de vitrine",
+    description:
+      "Pavlovas, entremets fruités et douceurs du comptoir pour le goûter, le dessert ou les envies du week-end.",
+    items: ["Pavlovas fruitées", "Entremets de vitrine", "Desserts du week-end"],
+    image: pavlovaImage,
+    alt: "Gâteau pavlova aux fruits rouges dans la vitrine de la boulangerie",
+    objectPosition: "50% 45%",
+  },
+];
+
+export type GalleryItem = {
+  title: string;
+  caption: string;
+  image: StaticImageData;
+  alt: string;
+  variant: "wide" | "portrait" | "square";
+  objectPosition?: string;
+};
+
+export const selectionGallery: GalleryItem[] = [
+  {
+    title: "Bouchées feuilletées",
+    caption: "Des pièces salées qui donnent envie de s'arrêter en passant.",
+    image: boucheesSaleesImage,
+    alt: "Bouchées feuilletées salées présentées en vitrine",
+    variant: "wide",
+    objectPosition: "50% 45%",
+  },
+  {
+    title: "Gâteau anniversaire",
+    caption: "Crème, ananas et finitions généreuses pour les moments à partager.",
+    image: gateauAnanasImage,
+    alt: "Gâteau anniversaire garni d'ananas et de crème fouettée",
+    variant: "square",
+    objectPosition: "50% 50%",
+  },
+  {
+    title: "Crémeux et chantilly",
+    caption: "Un décor blanc très travaillé qui valorise la matière et la main.",
+    image: gateauChantillyImage,
+    alt: "Gâteau recouvert de chantilly blanche avec décor de guimauves",
+    variant: "portrait",
+    objectPosition: "50% 40%",
+  },
+  {
+    title: "Le présentoir du jour",
+    caption: "Des gâteaux prêts à partir pour les commandes et les envies de dernière minute.",
+    image: presentoirGateauxImage,
+    alt: "Présentoir réfrigéré avec plusieurs gâteaux blancs et entremets",
+    variant: "portrait",
+    objectPosition: "50% 50%",
+  },
+  {
+    title: "Part gourmande",
+    caption: "Textures, crème et fruits rouges au plus près du comptoir.",
+    image: gateauFraisePartImage,
+    alt: "Part de gâteau aux fruits rouges et crème en gros plan",
+    variant: "wide",
+    objectPosition: "50% 45%",
+  },
+];
+
+export const celebrationGallery: GalleryItem[] = [
+  {
+    title: "Détail de pièce montée",
+    caption: "Une création brillante, très visuelle, pensée pour marquer l'instant.",
+    image: pieceMonteeChouxDetailImage,
+    alt: "Gros plan sur une pièce montée de choux glacés",
+    variant: "portrait",
+    objectPosition: "50% 45%",
+  },
+  {
+    title: "Tarte fruitée",
+    caption: "Couleurs de saison et présentation généreuse pour les commandes spéciales.",
+    image: tarteFruitsCreationImage,
+    alt: "Grande tarte rectangulaire garnie de fruits colorés",
+    variant: "square",
+    objectPosition: "50% 50%",
+  },
+  {
+    title: "Pièce montée",
+    caption: "Une structure de choux qui donne de la hauteur à la page comme à l'événement.",
+    image: pieceMonteeChouxImage,
+    alt: "Pièce montée de choux en présentation sur plan de travail",
+    variant: "portrait",
+    objectPosition: "50% 48%",
+  },
+  {
+    title: "Création de communion",
+    caption: "Un visuel plus cérémoniel pour montrer que la maison sait aussi accompagner les grands jours.",
+    image: pieceMonteeCommunionImage,
+    alt: "Pièce montée décorée pour une communion",
+    variant: "portrait",
+    objectPosition: "50% 45%",
   },
 ];
 
 export const trustSignals = [
   {
     label: "TripAdvisor",
-    text: "Réputation locale solide et visibilité sur les plateformes d'avis.",
+    text: "Une réputation locale déjà visible sur les plateformes d'avis.",
     href: business.tripadvisorUrl,
   },
   {
     label: "Facebook",
-    text: "Canal social mis en avant pour relayer l'actualité du fournil et les photos produits.",
+    text: "Des photos produits et de l'actualité qui prolongent la vitrine.",
     href: business.facebookUrl,
   },
 ];
@@ -99,8 +236,9 @@ export const trustSignals = [
 export const seoKeywords = [
   "boulangerie saint-pol-de-léon",
   "pain artisanal kreisker",
-  "meilleur kouign-amann finistère",
-  "viennoiserie saint-pol-de-léon",
+  "viennoiseries maison saint-pol-de-léon",
+  "pâtisseries bretonnes finistère",
+  "kouign-amann saint-pol-de-léon",
 ];
 
 export type DaySchedule = {

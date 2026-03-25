@@ -50,7 +50,7 @@ export function getBusinessStatus(date = new Date()) {
   if (!today) {
     return {
       label: "Horaires à confirmer",
-      detail: "Mettez à jour les horaires officiels dans le back-office.",
+      detail: "Merci de vérifier les horaires publics.",
       isOpen: false,
     };
   }

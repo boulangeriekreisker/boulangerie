@@ -5,11 +5,11 @@ export function Footer() {
     <footer className="site-footer">
       <div className="site-footer__grid">
         <div>
-          <p className="eyebrow">Vitrine locale</p>
+          <p className="eyebrow">Boulangerie artisanale</p>
           <h2 className="site-footer__title">{business.name}</h2>
           <p className="site-footer__copy">
-            Une page unique, rapide et chaleureuse, pensée pour faire venir en
-            boutique et renforcer la visibilité locale à Saint-Pol-de-Léon.
+            Une vitrine locale, rapide et chaleureuse, pensée pour donner envie
+            de venir en boutique dès la première seconde.
           </p>
         </div>
 
