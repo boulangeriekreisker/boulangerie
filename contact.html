@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La Boulangerie du Kreisker | Contact</title>
+    <meta
+      name="description"
+      content="Formulaire de contact, informations pratiques, plan et liens alternatifs."
+    />
+    <link href="./site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark">K</span>
+          <span class="brand__text">
+            <strong>La Boulangerie du Kreisker</strong>
+            <span>Saint-Pol-de-Leon</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+          <a class="nav__link" href="./index.html">Accueil</a>
+          <a class="nav__link" href="./produits.html">Produits</a>
+          <a class="nav__link" href="./a-propos.html">A propos</a>
+          <a class="nav__link is-active" href="./contact.html">Contact</a>
+          <a class="button button--primary" href="tel:+33298690219">Appeler</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main" id="contenu">
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div class="page-hero__copy">
+            <span class="eyebrow">Contact</span>
+            <h1>Un contact simple, des alternatives claires.</h1>
+            <p>
+              Formulaire plus complet inspire d'un site portfolio, mais toujours avec un chemin
+              direct vers l'appel et l'itineraire.
+            </p>
+          </div>
+
+          <div class="page-hero__media">
+            <img
+              src="./src/assets/kreisker/facade-kreisker.jpg"
+              alt="Facade de la boulangerie"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--compact" id="horaires">
+        <div class="container contact-grid">
+          <article class="form-card">
+            <span class="eyebrow">Form</span>
+            <h3>Parler d'une demande</h3>
+            <p>
+              Le formulaire reprend les champs du brief. Dans cette version statique, il est
+              present comme maquette fonctionnelle.
+            </p>
+
+            <form class="form-grid" data-demo-form>
+              <div class="field">
+                <label for="name">Nom</label>
+                <input id="name" name="name" required type="text" />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" required type="email" />
+              </div>
+
+              <div class="field">
+                <label for="project-type">Type de demande</label>
+                <select id="project-type" name="project-type">
+                  <option>Renseignement</option>
+                  <option>Commande</option>
+                  <option>Evenement</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="budget">Budget indicatif</label>
+                <select id="budget" name="budget">
+                  <option>Moins de 25 EUR</option>
+                  <option>25 a 50 EUR</option>
+                  <option>50 a 100 EUR</option>
+                  <option>100 EUR et plus</option>
+                </select>
+              </div>
+
+              <div class="field field--full">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+              </div>
+
+              <div class="field field--full">
+                <button class="button button--primary" type="submit">Envoyer la demande</button>
+              </div>
+
+              <p class="form-status" data-form-status></p>
+            </form>
+          </article>
+
+          <div class="visit-grid">
+            <article class="info-card">
+              <span class="eyebrow">Alternative</span>
+              <h3>Le plus rapide reste l'appel.</h3>
+              <ul class="contact-list">
+                <li>
+                  <strong>Telephone</strong>
+                  <span>02 98 69 02 19</span>
+                </li>
+                <li>
+                  <strong>Adresse</strong>
+                  <span>10 rue Cadiou, 29250 Saint-Pol-de-Leon</span>
+                </li>
+                <li>
+                  <strong>Facebook</strong>
+                  <span>Photos et actualites de la boutique</span>
+                </li>
+              </ul>
+
+              <div class="hero__actions">
+                <a class="button button--primary" href="tel:+33298690219">Appeler</a>
+                <a
+                  class="button button--secondary"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Ouvrir l'itineraire
+                </a>
+              </div>
+            </article>
+
+            <article class="info-card">
+              <span class="eyebrow">Horaires</span>
+              <h3>Quand passer</h3>
+              <ul class="info-list">
+                <li data-day="monday">
+                  <strong>Lundi</strong>
+                  <span>Ferme</span>
+                </li>
+                <li data-day="tuesday">
+                  <strong>Mardi</strong>
+                  <span>07:00 - 19:00</span>
+                </li>
+                <li data-day="wednesday">
+                  <strong>Mercredi</strong>
+                  <span>07:00 - 19:00</span>
+                </li>
+                <li data-day="thursday">
+                  <strong>Jeudi</strong>
+                  <span>07:00 - 19:00</span>
+                </li>
+                <li data-day="friday">
+                  <strong>Vendredi</strong>
+                  <span>07:00 - 19:00</span>
+                </li>
+                <li data-day="saturday">
+                  <strong>Samedi</strong>
+                  <span>07:00 - 19:00</span>
+                </li>
+                <li data-day="sunday">
+                  <strong>Dimanche</strong>
+                  <span>07:00 - 12:30</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--compact">
+        <div class="container">
+          <div class="media-card" style="aspect-ratio: 16 / 8">
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on&amp;output=embed"
+              title="Carte de la Boulangerie du Kreisker"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__panel">
+          <div>
+            <h3>Contact</h3>
+            <p>Une page de contact plus complete, avec formulaire et alternatives rapides.</p>
+          </div>
+
+          <div>
+            <strong>Liens</strong>
+            <ul>
+              <li><a href="./produits.html">Produits</a></li>
+              <li><a href="./a-propos.html">A propos</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>Contact direct</strong>
+            <ul>
+              <li><a href="tel:+33298690219">02 98 69 02 19</a></li>
+              <li>
+                <a
+                  href="https://www.facebook.com/112939582099551/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Facebook
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="mobile-bar" aria-label="Actions rapides">
+      <a href="tel:+33298690219">Appeler</a>
+      <a href="./produits.html">Produits</a>
+      <a href="./index.html">Accueil</a>
+    </div>
+
+    <script src="./site.js"></script>
+  </body>
+</html>

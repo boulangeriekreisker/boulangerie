@@ -3,1008 +3,229 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>La Boulangerie du Kreisker | Saint-Pol-de-Leon</title>
+    <title>La Boulangerie du Kreisker | Accueil</title>
     <meta
       name="description"
-      content="Boulangerie artisanale familiale a Saint-Pol-de-Leon : pains du quotidien, viennoiseries maison, patisseries, horaires, telephone et adresse."
+      content="Boulangerie artisanale a Saint-Pol-de-Leon : hero plein ecran, collections produits, informations pratiques et univers de la maison."
     />
-    <style>
-      @font-face {
-        font-family: "Instrument Sans";
-        src: url("./src/assets/fonts/InstrumentSans-Regular.ttf") format("truetype");
-        font-weight: 400;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Instrument Sans";
-        src: url("./src/assets/fonts/InstrumentSans-Bold.ttf") format("truetype");
-        font-weight: 700;
-        font-display: swap;
-      }
-
-      :root {
-        --bg: #f7f3ec;
-        --surface: #fffdf9;
-        --surface-soft: #efe7da;
-        --line: #ddd2c3;
-        --text: #362f29;
-        --muted: #6d6257;
-        --accent: #9b6245;
-        --accent-soft: #eee3d8;
-        --olive: #71795f;
-        --max: 1080px;
-        --radius: 18px;
-        --radius-sm: 12px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 5rem;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Instrument Sans", sans-serif;
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.6;
-      }
-
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid rgba(113, 121, 95, 0.28);
-        outline-offset: 3px;
-      }
-
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-        line-height: 1.05;
-        letter-spacing: -0.03em;
-        text-wrap: balance;
-      }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-        text-wrap: pretty;
-      }
-
-      .skip-link {
-        position: fixed;
-        left: 1rem;
-        top: 1rem;
-        z-index: 100;
-        padding: 0.8rem 1rem;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        transform: translateY(-160%);
-        transition: transform 0.18s ease;
-      }
-
-      .skip-link:focus {
-        transform: translateY(0);
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        background: rgba(247, 243, 236, 0.94);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(12px);
-      }
-
-      .container {
-        width: min(var(--max), calc(100% - 2rem));
-        margin: 0 auto;
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        min-height: 4.5rem;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        min-width: 0;
-      }
-
-      .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 2.75rem;
-        height: 2.75rem;
-        background: var(--accent-soft);
-        border: 1px solid #dcc6b5;
-        border-radius: 999px;
-        font-weight: 700;
-        color: var(--accent);
-        flex: none;
-      }
-
-      .brand-text {
-        min-width: 0;
-      }
-
-      .brand-text strong {
-        display: block;
-        font-size: 1rem;
-      }
-
-      .brand-text span {
-        display: block;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
-      .nav a {
-        padding: 0.7rem 0.9rem;
-        font-size: 0.95rem;
-        color: var(--muted);
-        border-radius: 999px;
-      }
-
-      .nav a:hover,
-      .nav a:focus-visible {
-        background: var(--surface);
-        color: var(--text);
-      }
-
-      .nav a.button--primary {
-        color: #fffaf4;
-        background: var(--accent);
-      }
-
-      .nav a.button--primary:hover,
-      .nav a.button--primary:focus-visible {
-        color: #fffaf4;
-        background: #86533a;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 3rem;
-        padding: 0.9rem 1.2rem;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        font-weight: 700;
-        transition:
-          background 0.18s ease,
-          border-color 0.18s ease,
-          color 0.18s ease;
-      }
-
-      .button--primary {
-        color: #fffaf4;
-        background: var(--accent);
-      }
-
-      .button--secondary {
-        color: var(--text);
-        background: var(--surface);
-        border-color: var(--line);
-      }
-
-      .button--primary:hover,
-      .button--primary:focus-visible {
-        background: #86533a;
-      }
-
-      .button--secondary:hover,
-      .button--secondary:focus-visible {
-        background: #f5efe7;
-      }
-
-      .section {
-        padding: 4rem 0;
-      }
-
-      .hero {
-        padding-top: 2rem;
-        padding-bottom: 2.75rem;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
-        gap: 2rem;
-        align-items: stretch;
-      }
-
-      .hero-copy {
-        display: grid;
-        gap: 1.4rem;
-      }
-
-      .eyebrow {
-        font-size: 0.76rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--olive);
-      }
-
-      .hero h1 {
-        font-size: clamp(2.7rem, 7vw, 4.9rem);
-        max-width: 10ch;
-      }
-
-      .hero p {
-        max-width: 55ch;
-        font-size: 1.02rem;
-      }
-
-      .hero-actions {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-      }
-
-      .hero-photo {
-        height: 100%;
-        min-height: 100%;
-        overflow: hidden;
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        background: var(--surface);
-      }
-
-      .quick-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.85rem;
-        margin-top: 1.6rem;
-      }
-
-      .quick-card,
-      .product-card,
-      .about-card,
-      .hours-card,
-      .contact-card,
-      .link-card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-      }
-
-      .quick-card {
-        padding: 1rem;
-        display: grid;
-        align-content: start;
-      }
-
-      .quick-card strong,
-      .hours-row strong,
-      .product-card h3,
-      .about-card h3,
-      .contact-card h3,
-      .hours-card h3 {
-        display: block;
-        color: var(--text);
-      }
-
-      .quick-card strong {
-        margin-bottom: 0.25rem;
-      }
-
-      .quick-card p {
-        font-size: 0.95rem;
-      }
-
-      .quick-card--status strong {
-        color: var(--olive);
-      }
-
-      .section-head {
-        max-width: 42rem;
-        margin-bottom: 2rem;
-      }
-
-      .section-head h2 {
-        font-size: clamp(2rem, 4vw, 3.1rem);
-        margin-top: 0.5rem;
-      }
-
-      .section-head p {
-        margin-top: 0.9rem;
-      }
-
-      .products-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-      }
-
-      .product-card {
-        overflow: hidden;
-      }
-
-      .product-media {
-        aspect-ratio: 16 / 11;
-        background: var(--surface-soft);
-      }
-
-      .product-body {
-        padding: 1.15rem;
-      }
-
-      .product-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.45rem;
-      }
-
-      .product-list {
-        margin: 0.9rem 0 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 0.45rem;
-      }
-
-      .product-list li {
-        color: var(--text);
-        font-size: 0.96rem;
-      }
-
-      .product-note {
-        padding: 1rem 1.1rem;
-        background: var(--surface-soft);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-sm);
-        color: var(--text);
-      }
-
-      .product-note strong {
-        display: block;
-        margin-bottom: 0.25rem;
-      }
-
-      .about-layout,
-      .visit-layout {
-        display: grid;
-        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
-        gap: 1rem;
-      }
-
-      .about-photo,
-      .map {
-        aspect-ratio: 4 / 5;
-        overflow: hidden;
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        background: var(--surface);
-      }
-
-      .about-card,
-      .hours-card,
-      .contact-card {
-        padding: 1.4rem;
-      }
-
-      .about-card h3,
-      .hours-card h3,
-      .contact-card h3 {
-        font-size: 1.6rem;
-        margin-bottom: 0.8rem;
-      }
-
-      .about-points {
-        margin: 1rem 0 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 0.6rem;
-      }
-
-      .about-points li {
-        color: var(--text);
-      }
-
-      .visit-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .hours-list {
-        display: grid;
-        gap: 0.6rem;
-        margin-top: 1rem;
-      }
-
-      .hours-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 0.9rem 1rem;
-        border-radius: var(--radius-sm);
-        background: #faf6ef;
-        border: 1px solid #e8ddcf;
-      }
-
-      .hours-row.is-today {
-        background: #eef1e7;
-        border-color: #d6dcc8;
-      }
-
-      .hours-row span {
-        color: var(--text);
-      }
-
-      .contact-grid {
-        display: grid;
-        gap: 0.8rem;
-        margin-top: 1rem;
-      }
-
-      .contact-line {
-        padding: 0.95rem 1rem;
-        border-radius: var(--radius-sm);
-        background: #faf6ef;
-        border: 1px solid #e8ddcf;
-        color: var(--text);
-      }
-
-      .contact-line strong {
-        display: block;
-        margin-bottom: 0.15rem;
-      }
-
-      .contact-actions {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-      }
-
-      .map {
-        min-height: 280px;
-        aspect-ratio: auto;
-      }
-
-      .map iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-
-      .links-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-        margin-top: 1rem;
-      }
-
-      .link-card {
-        padding: 1rem;
-      }
-
-      .link-card strong {
-        display: block;
-        margin-bottom: 0.2rem;
-      }
-
-      .site-footer {
-        padding: 0 0 2rem;
-      }
-
-      .footer-card {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr 0.8fr;
-        gap: 1rem;
-        padding: 1.4rem;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-      }
-
-      .footer-card h3 {
-        font-size: 1.35rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .footer-card ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 0.4rem;
-      }
-
-      .footer-card li,
-      .footer-card a {
-        color: var(--muted);
-      }
-
-      .mobile-bar {
-        display: none;
-      }
-
-      @media (max-width: 900px) {
-        .hero-grid,
-        .about-layout,
-        .visit-layout,
-        .footer-card {
-          grid-template-columns: 1fr;
-        }
-
-        .quick-grid,
-        .product-grid,
-        .links-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .hero-photo {
-          aspect-ratio: 16 / 11;
-          min-height: 0;
-        }
-      }
-
-      @media (max-width: 720px) {
-        html {
-          scroll-padding-top: 4.6rem;
-        }
-
-        body {
-          padding-bottom: 5.8rem;
-        }
-
-        .container {
-          width: calc(100% - 1.2rem);
-        }
-
-        .header-inner {
-          align-items: flex-start;
-          flex-direction: column;
-          padding: 0.85rem 0;
-        }
-
-        .nav {
-          width: 100%;
-          justify-content: flex-start;
-          overflow-x: auto;
-          flex-wrap: nowrap;
-        }
-
-        .quick-grid,
-        .product-grid,
-        .links-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero h1 {
-          max-width: 100%;
-          font-size: clamp(2.5rem, 12vw, 4rem);
-        }
-
-        .hero-actions,
-        .contact-actions {
-          flex-direction: column;
-        }
-
-        .button {
-          width: 100%;
-        }
-
-        .hours-row {
-          flex-direction: column;
-        }
-
-        .mobile-bar {
-          position: fixed;
-          left: 0.6rem;
-          right: 0.6rem;
-          bottom: 0.6rem;
-          z-index: 60;
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 0.6rem;
-          padding: 0.6rem;
-          background: rgba(255, 253, 249, 0.96);
-          border: 1px solid var(--line);
-          border-radius: 16px;
-        }
-
-        .mobile-bar a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 3rem;
-          padding: 0.8rem 0.5rem;
-          border-radius: 12px;
-          background: var(--surface);
-          border: 1px solid var(--line);
-          font-weight: 700;
-          text-align: center;
-        }
-
-        .mobile-bar a:first-child {
-          background: var(--accent);
-          border-color: var(--accent);
-          color: #fffaf4;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-    </style>
+    <link href="./site.css" rel="stylesheet" />
   </head>
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#haut" aria-label="Retour en haut">
-          <span class="brand-mark">K</span>
-          <span class="brand-text">
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark">K</span>
+          <span class="brand__text">
             <strong>La Boulangerie du Kreisker</strong>
             <span>Saint-Pol-de-Leon</span>
           </span>
         </a>
 
         <nav class="nav" aria-label="Navigation principale">
-          <a href="#produits">Produits</a>
-          <a href="#horaires">Horaires</a>
-          <a href="#apropos">A propos</a>
-          <a href="#contact">Contact</a>
+          <a class="nav__link is-active" href="./index.html">Accueil</a>
+          <a class="nav__link" href="./produits.html">Produits</a>
+          <a class="nav__link" href="./a-propos.html">A propos</a>
+          <a class="nav__link" href="./contact.html">Contact</a>
           <a class="button button--primary" href="tel:+33298690219">Appeler</a>
         </nav>
       </div>
     </header>
 
-    <main id="contenu">
-      <section class="section hero" id="haut">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <span class="eyebrow">Boulangerie artisanale familiale</span>
-              <h1>La boulangerie de village, simple, bonne et facile a trouver.</h1>
-              <p>
-                Pains du quotidien, viennoiseries maison, patisseries et accueil de
-                proximite au coeur de Saint-Pol-de-Leon.
-              </p>
-
-              <div class="hero-actions">
-                <a class="button button--primary" href="#produits">Voir nos produits</a>
-                <a class="button button--secondary" href="#horaires">Horaires</a>
-              </div>
-
-              <div class="quick-grid">
-                <article class="quick-card quick-card--status">
-                  <strong id="status-label">Aujourd'hui</strong>
-                  <p id="status-detail">Chargement...</p>
-                </article>
-                <article class="quick-card">
-                  <strong>Telephone</strong>
-                  <p>02 98 69 02 19</p>
-                </article>
-                <article class="quick-card">
-                  <strong>Adresse</strong>
-                  <p>10 rue Cadiou, 29250 Saint-Pol-de-Leon</p>
-                </article>
-                <article class="quick-card">
-                  <strong>Essentiel</strong>
-                  <p>Pains, viennoiseries, patisseries, commandes</p>
-                </article>
-              </div>
-            </div>
-
-            <div class="hero-photo">
+    <main class="page-main" id="contenu">
+      <section class="hero">
+        <div class="hero__slider" data-hero-slider>
+          <div
+            class="hero__slide is-active"
+            data-text="Le quotidien de la boutique, du matin jusqu'aux grandes occasions."
+            data-title="Une vitrine artisanale, locale et tres lisible."
+          >
+            <div class="hero__media">
               <img
                 src="./src/assets/kreisker/vitrine-patisseries.jpg"
                 alt="Vitrine de patisseries a la Boulangerie du Kreisker"
               />
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="section" id="produits">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">Nos produits</span>
-            <h2>Ce que l'on vient chercher ici.</h2>
-            <p>
-              Une lecture simple, sans surcharge, pour voir rapidement l'essentiel de la
-              boulangerie.
-            </p>
-          </div>
-
-          <div class="products-layout">
-            <div class="product-grid">
-              <article class="product-card">
-                <div class="product-media">
-                  <img
-                    src="./src/assets/kreisker/collage-viennoiseries.jpg"
-                    alt="Viennoiseries de la boulangerie"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="product-body">
-                  <h3>Viennoiseries</h3>
-                  <p>Pour le matin et les habitudes du quotidien.</p>
-                  <ul class="product-list">
-                    <li>Croissants</li>
-                    <li>Pains au chocolat</li>
-                    <li>Gourmandises du matin</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-media">
-                  <img
-                    src="./src/assets/kreisker/sandwiches-saumon.jpg"
-                    alt="Snacking et sandwiches"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="product-body">
-                  <h3>Snacking</h3>
-                  <p>Une pause dejeuner rapide, lisible et pratique.</p>
-                  <ul class="product-list">
-                    <li>Sandwiches</li>
-                    <li>Bouchees salees</li>
-                    <li>Petite restauration</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-media">
-                  <img
-                    src="./src/assets/kreisker/pavlova-fruits-rouges.jpg"
-                    alt="Patisseries et desserts"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="product-body">
-                  <h3>Patisseries</h3>
-                  <p>Des desserts de vitrine pour le gouter ou le week-end.</p>
-                  <ul class="product-list">
-                    <li>Entremets</li>
-                    <li>Fruits rouges</li>
-                    <li>Gateaux individuels</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="product-card">
-                <div class="product-media">
-                  <img
-                    src="./src/assets/kreisker/presentoir-gateaux.jpg"
-                    alt="Presentoir de gateaux"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="product-body">
-                  <h3>Commandes</h3>
-                  <p>Pour les anniversaires et les moments a partager.</p>
-                  <ul class="product-list">
-                    <li>Gateaux</li>
-                    <li>Creations festives</li>
-                    <li>Selon demande</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-
-            <div class="product-note">
-              <strong>Pains du quotidien</strong>
-              La page met l'accent sur les visuels disponibles, mais la boulangerie reste
-              avant tout une maison de pains, viennoiseries et produits de tous les jours.
-              Pour une demande precise ou une commande, le plus simple reste d'appeler.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="apropos">
-        <div class="container">
-          <div class="about-layout">
-            <div class="about-photo">
+          <div
+            class="hero__slide"
+            data-text="Une maison de quartier simple a reperer et facile a rejoindre."
+            data-title="Au coeur de Saint-Pol-de-Leon."
+          >
+            <div class="hero__media">
               <img
                 src="./src/assets/kreisker/facade-kreisker.jpg"
                 alt="Facade de la Boulangerie du Kreisker"
+              />
+            </div>
+          </div>
+
+          <div
+            class="hero__slide"
+            data-text="Viennoiseries, snacking, patisseries et creations a partager."
+            data-title="Des collections qui donnent envie d'entrer."
+          >
+            <div class="hero__media">
+              <img
+                src="./src/assets/kreisker/collage-viennoiseries.jpg"
+                alt="Viennoiseries et gourmandises de la boulangerie"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__content">
+          <div class="hero__layout">
+            <div class="hero__copy">
+              <span class="eyebrow">Boulangerie artisanale familiale</span>
+              <h1 data-hero-title>Une vitrine artisanale, locale et tres lisible.</h1>
+              <p data-hero-text>
+                Le quotidien de la boutique, du matin jusqu'aux grandes occasions.
+              </p>
+
+              <div class="hero__actions">
+                <a class="button button--primary" href="./produits.html">Voir nos produits</a>
+                <a class="button button--ghost" href="./contact.html#horaires">Horaires</a>
+              </div>
+            </div>
+
+            <div class="hero__facts">
+              <article class="hero__fact">
+                <strong data-status-label>Aujourd'hui</strong>
+                <span data-status-detail>Chargement...</span>
+              </article>
+              <article class="hero__fact">
+                <strong>Adresse</strong>
+                <span>10 rue Cadiou, 29250 Saint-Pol-de-Leon</span>
+              </article>
+              <article class="hero__fact">
+                <strong>Telephone</strong>
+                <span>02 98 69 02 19</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Homepage</span>
+            <h2>Les grandes familles de la maison.</h2>
+            <p>
+              Une grille uniforme en trois colonnes, inspiree d'un portfolio, mais adaptee a la
+              lecture d'une boulangerie de commune.
+            </p>
+          </div>
+
+          <div class="grid-collections">
+            <article class="collection-card">
+              <div class="collection-card__media">
+                <img
+                  src="./src/assets/kreisker/collage-viennoiseries.jpg"
+                  alt="Collection viennoiseries"
+                />
+              </div>
+              <div class="collection-card__body">
+                <h3>Pains & viennoiseries</h3>
+                <p>Le matin, les habitudes et les produits que l'on vient chercher chaque jour.</p>
+                <a class="card-link" href="./collection-pains.html">Voir la page detail</a>
+              </div>
+            </article>
+
+            <article class="collection-card">
+              <div class="collection-card__media">
+                <img
+                  src="./src/assets/kreisker/sandwiches-saumon.jpg"
+                  alt="Collection snacking"
+                />
+              </div>
+              <div class="collection-card__body">
+                <h3>Pause dejeuner</h3>
+                <p>Une offre rapide, pratique et tres lisible pour les clients du midi.</p>
+                <a class="card-link" href="./collection-viennoiseries.html">Voir la page detail</a>
+              </div>
+            </article>
+
+            <article class="collection-card">
+              <div class="collection-card__media">
+                <img
+                  src="./src/assets/kreisker/pavlova-fruits-rouges.jpg"
+                  alt="Collection patisseries"
+                />
+              </div>
+              <div class="collection-card__body">
+                <h3>Patisseries & creations</h3>
+                <p>Des desserts de vitrine et des commandes qui prolongent l'experience.</p>
+                <a class="card-link" href="./collection-patisseries.html">Voir la page detail</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--compact">
+        <div class="container">
+          <div class="split">
+            <div class="media-card media-card--tall">
+              <img
+                src="./src/assets/kreisker/facade-kreisker.jpg"
+                alt="Photo de la facade de la boulangerie"
                 loading="lazy"
               />
             </div>
 
-            <div class="about-card">
-              <span class="eyebrow">A propos</span>
-              <h3>Une boulangerie de commune, artisanale et proche de ses clients.</h3>
+            <div class="panel">
+              <span class="eyebrow">Brief bio</span>
+              <h3>Une boulangerie de quartier, simple et directe.</h3>
               <p>
-                Le site est pense comme la boutique : clair, simple et accueillant. On y
-                trouve tout de suite les informations utiles, sans effets inutiles.
+                Le site reprend une logique de portfolio editoriale, mais l'intention reste tres
+                locale : montrer la boutique, l'offre du quotidien et donner acces tout de suite
+                aux informations pratiques.
               </p>
-              <ul class="about-points">
-                <li>Une presence locale facile a identifier</li>
-                <li>Des produits du quotidien et des douceurs maison</li>
-                <li>Un contact rapide par telephone et un acces simple</li>
+              <ul class="panel-list">
+                <li>Facade facile a identifier</li>
+                <li>Produits classes en collections nettes</li>
+                <li>Contact rapide par telephone et itineraire</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="horaires">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">Horaires et contact</span>
-            <h2>Les informations critiques, tout de suite.</h2>
-            <p>
-              Horaires, telephone, adresse et acces sont prioritaires parce que la majorite des
-              clients viennent depuis leur telephone.
-            </p>
-          </div>
-
-          <div class="visit-layout">
-            <div class="visit-grid">
-              <article class="hours-card">
-                <h3>Horaires</h3>
-                <div class="hours-list" id="hours-list">
-                  <div class="hours-row" data-day="monday">
-                    <strong>Lundi</strong>
-                    <span>Ferme</span>
-                  </div>
-                  <div class="hours-row" data-day="tuesday">
-                    <strong>Mardi</strong>
-                    <span>07:00 - 19:00</span>
-                  </div>
-                  <div class="hours-row" data-day="wednesday">
-                    <strong>Mercredi</strong>
-                    <span>07:00 - 19:00</span>
-                  </div>
-                  <div class="hours-row" data-day="thursday">
-                    <strong>Jeudi</strong>
-                    <span>07:00 - 19:00</span>
-                  </div>
-                  <div class="hours-row" data-day="friday">
-                    <strong>Vendredi</strong>
-                    <span>07:00 - 19:00</span>
-                  </div>
-                  <div class="hours-row" data-day="saturday">
-                    <strong>Samedi</strong>
-                    <span>07:00 - 19:00</span>
-                  </div>
-                  <div class="hours-row" data-day="sunday">
-                    <strong>Dimanche</strong>
-                    <span>07:00 - 12:30</span>
-                  </div>
-                </div>
-              </article>
-
-              <article class="contact-card" id="contact">
-                <h3>Contact</h3>
-                <div class="contact-grid">
-                  <div class="contact-line">
-                    <strong>Telephone</strong>
-                    <span>02 98 69 02 19</span>
-                  </div>
-                  <div class="contact-line">
-                    <strong>Adresse</strong>
-                    <span>10 rue Cadiou, 29250 Saint-Pol-de-Leon</span>
-                  </div>
-                </div>
-
-                <div class="contact-actions">
-                  <a class="button button--primary" href="tel:+33298690219">Appeler</a>
-                  <a
-                    class="button button--secondary"
-                    href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Itineraire
-                  </a>
-                </div>
-
-                <div class="links-grid">
-                  <a
-                    class="link-card"
-                    href="https://www.tripadvisor.fr/Restaurant_Review-g660194-d13948092-Reviews-Boulangerie_du_Kreisker-Saint_Pol_de_Leon_Finistere_Brittany.html"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <strong>TripAdvisor</strong>
-                    <p>Voir les avis et la reputation locale.</p>
-                  </a>
-                  <a
-                    class="link-card"
-                    href="https://www.facebook.com/112939582099551/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <strong>Facebook</strong>
-                    <p>Retrouver les photos et l'actualite de la boutique.</p>
-                  </a>
-                </div>
-              </article>
-            </div>
-
-            <div class="map">
-              <iframe
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on&amp;output=embed"
-                title="Carte de la Boulangerie du Kreisker"
-              ></iframe>
+              <div class="hero__actions">
+                <a class="button button--secondary" href="./a-propos.html">A propos</a>
+                <a class="button button--primary" href="./contact.html">Contacter la boutique</a>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="footer">
       <div class="container">
-        <div class="footer-card">
+        <div class="footer__panel">
           <div>
             <h3>La Boulangerie du Kreisker</h3>
             <p>
-              Une page volontairement simple, claire et rapide, centree sur ce qui compte
-              vraiment pour une boulangerie de commune.
+              Refonte multi-pages inspiree d'un site portfolio, adaptee a une boulangerie
+              artisanale de commune.
             </p>
           </div>
 
           <div>
-            <strong>Navigation</strong>
+            <strong>Pages</strong>
             <ul>
-              <li><a href="#produits">Produits</a></li>
-              <li><a href="#horaires">Horaires</a></li>
-              <li><a href="#apropos">A propos</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="./produits.html">Produits</a></li>
+              <li><a href="./a-propos.html">A propos</a></li>
+              <li><a href="./contact.html">Contact</a></li>
             </ul>
           </div>
 
           <div>
-            <strong>Infos utiles</strong>
+            <strong>Acces rapide</strong>
             <ul>
+              <li><a href="tel:+33298690219">02 98 69 02 19</a></li>
               <li>10 rue Cadiou</li>
               <li>29250 Saint-Pol-de-Leon</li>
-              <li><a href="tel:+33298690219">02 98 69 02 19</a></li>
             </ul>
           </div>
         </div>
@@ -1013,68 +234,10 @@
 
     <div class="mobile-bar" aria-label="Actions rapides">
       <a href="tel:+33298690219">Appeler</a>
-      <a href="#horaires">Horaires</a>
-      <a
-        href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Itineraire
-      </a>
+      <a href="./produits.html">Produits</a>
+      <a href="./contact.html">Contact</a>
     </div>
 
-    <script>
-      (function () {
-        const schedule = {
-          monday: [],
-          tuesday: [["07:00", "19:00"]],
-          wednesday: [["07:00", "19:00"]],
-          thursday: [["07:00", "19:00"]],
-          friday: [["07:00", "19:00"]],
-          saturday: [["07:00", "19:00"]],
-          sunday: [["07:00", "12:30"]],
-        };
-
-        const formatter = new Intl.DateTimeFormat("en-GB", {
-          timeZone: "Europe/Paris",
-          weekday: "long",
-          hour: "2-digit",
-          minute: "2-digit",
-          hourCycle: "h23",
-        });
-
-        const parts = formatter.formatToParts(new Date());
-        const day = parts.find(function (part) {
-          return part.type === "weekday";
-        }).value.toLowerCase();
-        const hour = parts.find(function (part) {
-          return part.type === "hour";
-        }).value;
-        const minute = parts.find(function (part) {
-          return part.type === "minute";
-        }).value;
-        const now = hour + ":" + minute;
-        const intervals = schedule[day] || [];
-
-        const statusLabel = document.getElementById("status-label");
-        const statusDetail = document.getElementById("status-detail");
-
-        if (intervals.length && now >= intervals[0][0] && now <= intervals[0][1]) {
-          statusLabel.textContent = "Ouvert maintenant";
-          statusDetail.textContent = "Fermeture a " + intervals[0][1];
-        } else if (intervals.length && now < intervals[0][0]) {
-          statusLabel.textContent = "Ouvre aujourd'hui";
-          statusDetail.textContent = "Ouverture a " + intervals[0][0];
-        } else {
-          statusLabel.textContent = "Ferme pour le moment";
-          statusDetail.textContent = "Voir les horaires plus bas";
-        }
-
-        const todayRow = document.querySelector('[data-day="' + day + '"]');
-        if (todayRow) {
-          todayRow.classList.add("is-today");
-        }
-      })();
-    </script>
+    <script src="./site.js"></script>
   </body>
 </html>
