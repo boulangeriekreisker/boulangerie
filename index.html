@@ -183,6 +183,17 @@
         color: var(--text);
       }
 
+      .nav a.button--primary {
+        color: #fffaf4;
+        background: var(--accent);
+      }
+
+      .nav a.button--primary:hover,
+      .nav a.button--primary:focus-visible {
+        color: #fffaf4;
+        background: #86533a;
+      }
+
       .button {
         display: inline-flex;
         align-items: center;
@@ -220,18 +231,19 @@
       }
 
       .section {
-        padding: 4.5rem 0;
+        padding: 4rem 0;
       }
 
       .hero {
         padding-top: 2rem;
+        padding-bottom: 2.75rem;
       }
 
       .hero-grid {
         display: grid;
         grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
         gap: 2rem;
-        align-items: center;
+        align-items: stretch;
       }
 
       .hero-copy {
@@ -264,7 +276,8 @@
       }
 
       .hero-photo {
-        aspect-ratio: 4 / 5;
+        height: 100%;
+        min-height: 100%;
         overflow: hidden;
         border-radius: var(--radius);
         border: 1px solid var(--line);
@@ -273,7 +286,7 @@
 
       .quick-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.85rem;
         margin-top: 1.6rem;
       }
@@ -291,6 +304,8 @@
 
       .quick-card {
         padding: 1rem;
+        display: grid;
+        align-content: start;
       }
 
       .quick-card strong,
@@ -557,6 +572,11 @@
         .product-grid,
         .links-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .hero-photo {
+          aspect-ratio: 16 / 11;
+          min-height: 0;
         }
       }
 
