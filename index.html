@@ -6,26 +6,12 @@
     <title>La Boulangerie du Kreisker | Saint-Pol-de-Leon</title>
     <meta
       name="description"
-      content="Boulangerie artisanale a Saint-Pol-de-Leon : pains du quotidien, viennoiseries maison, pause dejeuner, patisseries gourmandes et creations sur commande."
+      content="Boulangerie artisanale familiale a Saint-Pol-de-Leon : pains du quotidien, viennoiseries maison, patisseries, horaires, telephone et adresse."
     />
     <style>
       @font-face {
-        font-family: "Young Serif";
-        src: url("./src/assets/fonts/YoungSerif-Regular.ttf") format("truetype");
-        font-display: swap;
-      }
-
-      @font-face {
         font-family: "Instrument Sans";
         src: url("./src/assets/fonts/InstrumentSans-Regular.ttf") format("truetype");
-        font-weight: 400;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Instrument Sans";
-        src: url("./src/assets/fonts/InstrumentSans-Italic.ttf") format("truetype");
-        font-style: italic;
         font-weight: 400;
         font-display: swap;
       }
@@ -38,21 +24,18 @@
       }
 
       :root {
-        --sand: #f2e5d0;
-        --cream: #fbf6ee;
-        --milk: #fffaf4;
-        --ink: #1e1712;
-        --ink-soft: #66584b;
-        --copper: #bc6932;
-        --sea: #224a5a;
-        --leaf: #4b7758;
-        --line: rgba(48, 31, 18, 0.14);
-        --panel: rgba(255, 250, 243, 0.82);
-        --panel-strong: rgba(255, 252, 247, 0.94);
-        --shadow: 0 24px 80px rgba(47, 28, 13, 0.14);
-        --radius-pill: 999px;
-        --max: 1240px;
-        --focus: rgba(34, 74, 90, 0.28);
+        --bg: #f7f3ec;
+        --surface: #fffdf9;
+        --surface-soft: #efe7da;
+        --line: #ddd2c3;
+        --text: #362f29;
+        --muted: #6d6257;
+        --accent: #9b6245;
+        --accent-soft: #eee3d8;
+        --olive: #71795f;
+        --max: 1080px;
+        --radius: 18px;
+        --radius-sm: 12px;
       }
 
       * {
@@ -61,31 +44,15 @@
 
       html {
         scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
       }
 
       body {
         margin: 0;
-        min-height: 100vh;
-        color: var(--ink);
         font-family: "Instrument Sans", sans-serif;
+        color: var(--text);
+        background: var(--bg);
         line-height: 1.6;
-        background:
-          radial-gradient(circle at top left, rgba(255, 241, 214, 0.82), transparent 28%),
-          radial-gradient(circle at 86% 14%, rgba(34, 74, 90, 0.16), transparent 22%),
-          linear-gradient(180deg, #f0e1ca 0%, #faf5ed 56%, #f3e2cb 100%);
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-        background-size: 46px 46px;
-        mask-image: radial-gradient(circle at center, #000 42%, transparent 84%);
-        pointer-events: none;
-        opacity: 0.2;
       }
 
       img {
@@ -100,39 +67,38 @@
         text-decoration: none;
       }
 
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid rgba(113, 121, 95, 0.28);
+        outline-offset: 3px;
+      }
+
       h1,
       h2,
       h3 {
         margin: 0;
-        font-family: "Young Serif", serif;
-        line-height: 0.95;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
         text-wrap: balance;
       }
 
-      p,
-      li,
-      span,
-      strong {
+      p {
+        margin: 0;
+        color: var(--muted);
         text-wrap: pretty;
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid var(--focus);
-        outline-offset: 4px;
       }
 
       .skip-link {
         position: fixed;
-        top: 1rem;
         left: 1rem;
+        top: 1rem;
         z-index: 100;
         padding: 0.8rem 1rem;
-        border-radius: var(--radius-pill);
-        background: var(--milk);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 999px;
         transform: translateY(-160%);
-        transition: transform 0.2s ease;
+        transition: transform 0.18s ease;
       }
 
       .skip-link:focus {
@@ -143,186 +109,78 @@
         position: sticky;
         top: 0;
         z-index: 40;
-        border-bottom: 1px solid rgba(48, 31, 18, 0.08);
-        background: rgba(250, 244, 234, 0.86);
-        backdrop-filter: blur(18px);
+        background: rgba(247, 243, 236, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(12px);
       }
 
-      .header-inner,
-      .section,
-      .site-footer__inner {
+      .container {
         width: min(var(--max), calc(100% - 2rem));
         margin: 0 auto;
       }
 
       .header-inner {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 1rem;
+        display: flex;
         align-items: center;
-        padding: 0.95rem 0;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 4.5rem;
       }
 
       .brand {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 0.85rem;
+        gap: 0.75rem;
+        min-width: 0;
       }
 
-      .brand__crest {
+      .brand-mark {
         display: grid;
         place-items: center;
-        width: 3rem;
-        height: 3rem;
-        color: #fff9f1;
-        font-family: "Young Serif", serif;
-        font-size: 1.45rem;
-        background: linear-gradient(135deg, var(--copper), #de9754);
-        border-radius: 0.95rem 1.4rem 1rem 1.5rem;
-        box-shadow: 0 16px 36px rgba(188, 105, 50, 0.24);
-      }
-
-      .brand__text {
-        display: grid;
-        gap: 0.05rem;
-      }
-
-      .brand__text strong {
-        font-size: 1.05rem;
-      }
-
-      .brand__text span,
-      .lede,
-      .section-intro,
-      .card p,
-      .visit-panel p,
-      .site-footer p,
-      .hours-note,
-      .social-card span,
-      .status small {
-        color: var(--ink-soft);
-      }
-
-      .brand__text span {
-        font-size: 0.84rem;
-      }
-
-      .main-nav {
-        display: flex;
-        justify-content: center;
-        gap: 0.45rem;
-        flex-wrap: wrap;
-      }
-
-      .main-nav a {
-        padding: 0.7rem 0.95rem;
-        border-radius: var(--radius-pill);
-        color: var(--ink-soft);
+        width: 2.75rem;
+        height: 2.75rem;
+        background: var(--accent-soft);
+        border: 1px solid #dcc6b5;
+        border-radius: 999px;
         font-weight: 700;
-        transition:
-          background 0.2s ease,
-          transform 0.2s ease,
-          color 0.2s ease;
+        color: var(--accent);
+        flex: none;
       }
 
-      .main-nav a:hover,
-      .main-nav a:focus-visible {
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.76);
-        transform: translateY(-1px);
+      .brand-text {
+        min-width: 0;
       }
 
-      .header-cta {
-        display: inline-flex;
+      .brand-text strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .brand-text span {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
         align-items: center;
-        justify-content: center;
-        min-height: 3rem;
-        padding: 0.9rem 1.25rem;
-        color: #fff8f0;
-        font-weight: 700;
-        border-radius: var(--radius-pill);
-        background: linear-gradient(135deg, var(--copper), #de9754);
-        box-shadow: 0 16px 36px rgba(188, 105, 50, 0.22);
-      }
-
-      .section {
-        padding: 2.2rem 0 4.8rem;
-      }
-
-      .hero {
-        padding-top: 1.6rem;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 0.98fr) minmax(340px, 1.02fr);
-        gap: 1rem;
-      }
-
-      .hero-copy,
-      .hero-frame,
-      .card,
-      .visit-panel,
-      .social-card,
-      .gallery-hero {
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow);
-      }
-
-      .hero-copy {
-        position: relative;
-        overflow: hidden;
-        padding: clamp(2rem, 5vw, 3.7rem);
-        border-radius: 2rem 4rem 2.2rem 1.9rem;
-        background: linear-gradient(145deg, rgba(255, 251, 245, 0.97), rgba(255, 246, 236, 0.88));
-      }
-
-      .hero-copy::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at top right, rgba(220, 233, 237, 0.56), transparent 32%),
-          radial-gradient(circle at bottom right, rgba(246, 214, 170, 0.54), transparent 36%);
-      }
-
-      .hero-copy > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      .eyebrow {
-        display: inline-block;
-        margin-bottom: 0.9rem;
-        color: var(--sea);
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      .hero h1 {
-        max-width: 11ch;
-        font-size: clamp(3rem, 8vw, 5.7rem);
-        letter-spacing: -0.05em;
-      }
-
-      .lede {
-        max-width: 56ch;
-        margin: 1rem 0 0;
-        font-size: 1.06rem;
-      }
-
-      .hero-actions,
-      .hero-meta,
-      .visit-actions {
-        display: flex;
-        gap: 0.85rem;
+        gap: 0.35rem;
         flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
-      .hero-actions {
-        margin-top: 1.6rem;
+      .nav a {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+        border-radius: 999px;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        background: var(--surface);
+        color: var(--text);
       }
 
       .button {
@@ -330,610 +188,441 @@
         align-items: center;
         justify-content: center;
         min-height: 3rem;
-        padding: 0.92rem 1.28rem;
-        border-radius: var(--radius-pill);
+        padding: 0.9rem 1.2rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
         font-weight: 700;
         transition:
-          transform 0.2s ease,
-          background 0.2s ease,
-          border-color 0.2s ease;
+          background 0.18s ease,
+          border-color 0.18s ease,
+          color 0.18s ease;
       }
 
-      .button:hover,
-      .button:focus-visible {
-        transform: translateY(-2px);
+      .button--primary {
+        color: #fffaf4;
+        background: var(--accent);
       }
 
-      .button--solid {
-        color: #fff8f0;
-        background: linear-gradient(135deg, var(--copper), #de9754);
-        box-shadow: 0 16px 34px rgba(188, 105, 50, 0.22);
+      .button--secondary {
+        color: var(--text);
+        background: var(--surface);
+        border-color: var(--line);
       }
 
-      .button--ghost {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.72);
+      .button--primary:hover,
+      .button--primary:focus-visible {
+        background: #86533a;
       }
 
-      .status-row {
+      .button--secondary:hover,
+      .button--secondary:focus-visible {
+        background: #f5efe7;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.85rem;
-        margin-top: 1.4rem;
-      }
-
-      .status,
-      .fact {
-        padding: 0.95rem 1rem;
-        border: 1px solid rgba(48, 31, 18, 0.1);
-        border-radius: 1.05rem 1.35rem 1rem 1.2rem;
-        background: rgba(255, 255, 255, 0.66);
-      }
-
-      .status strong,
-      .fact strong {
-        display: block;
-        margin-bottom: 0.2rem;
-      }
-
-      .status[data-open="true"] {
-        border-color: rgba(75, 119, 88, 0.28);
-        background: rgba(75, 119, 88, 0.1);
-      }
-
-      .hero-meta {
-        margin-top: 1.35rem;
+        grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
+        gap: 2rem;
         align-items: center;
       }
 
-      .hero-meta a,
-      .contact-lines a {
-        font-weight: 700;
-        text-decoration: underline;
-        text-decoration-thickness: 0.08em;
-        text-underline-offset: 0.18em;
-      }
-
-      .hero-frame {
-        padding: 0.95rem;
-        border-radius: 2.6rem 1.7rem 2rem 1.5rem;
-        background: rgba(255, 253, 248, 0.58);
-      }
-
-      .hero-mosaic {
+      .hero-copy {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        grid-template-rows: 400px 235px;
-        gap: 0.95rem;
+        gap: 1.4rem;
       }
 
-      .media {
-        position: relative;
+      .eyebrow {
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--olive);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 7vw, 4.9rem);
+        max-width: 10ch;
+      }
+
+      .hero p {
+        max-width: 55ch;
+        font-size: 1.02rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-photo {
+        aspect-ratio: 4 / 5;
         overflow: hidden;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: var(--surface);
       }
 
-      .media img {
-        transition: transform 0.45s ease;
+      .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin-top: 1.6rem;
       }
 
-      .media:hover img {
-        transform: scale(1.03);
+      .quick-card,
+      .product-card,
+      .about-card,
+      .hours-card,
+      .contact-card,
+      .link-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
       }
 
-      .media::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background: linear-gradient(180deg, rgba(14, 10, 7, 0.02), rgba(14, 10, 7, 0.54));
+      .quick-card {
+        padding: 1rem;
       }
 
-      .media-caption {
-        position: absolute;
-        left: 1rem;
-        right: 1rem;
-        bottom: 1rem;
-        z-index: 2;
-        color: #fff8f0;
-      }
-
-      .media-caption strong {
+      .quick-card strong,
+      .hours-row strong,
+      .product-card h3,
+      .about-card h3,
+      .contact-card h3,
+      .hours-card h3 {
         display: block;
-        margin-bottom: 0.2rem;
+        color: var(--text);
       }
 
-      .media-caption span {
-        color: rgba(255, 248, 240, 0.84);
+      .quick-card strong {
+        margin-bottom: 0.25rem;
+      }
+
+      .quick-card p {
         font-size: 0.95rem;
       }
 
-      .mosaic-main {
-        grid-row: 1 / span 2;
-        border-radius: 2.2rem 1.4rem 2rem 1.15rem;
-      }
-
-      .mosaic-top {
-        border-radius: 1.4rem 2rem 1.2rem 1rem;
-      }
-
-      .mosaic-bottom {
-        border-radius: 1.25rem 1rem 1.8rem 1.3rem;
-      }
-
-      .signature-rail {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.9rem;
-        margin-top: 1.2rem;
-      }
-
-      .signature-chip {
-        padding: 0.9rem 1rem;
-        border: 1px solid var(--line);
-        border-radius: 1rem 1.45rem 1rem 1.3rem;
-        background: rgba(255, 255, 255, 0.58);
-        font-weight: 700;
+      .quick-card--status strong {
+        color: var(--olive);
       }
 
       .section-head {
-        max-width: 54rem;
-        margin-bottom: 1.8rem;
+        max-width: 42rem;
+        margin-bottom: 2rem;
       }
 
       .section-head h2 {
-        font-size: clamp(2.25rem, 5vw, 4.3rem);
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        margin-top: 0.5rem;
       }
 
-      .section-intro {
-        margin: 0.9rem 0 0;
-        font-size: 1rem;
+      .section-head p {
+        margin-top: 0.9rem;
       }
 
-      .house-grid {
+      .products-layout {
         display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
+        grid-template-columns: 1fr;
         gap: 1rem;
       }
 
-      .gallery-hero {
-        padding: 0.9rem;
-        border-radius: 2.3rem 1.8rem 1.8rem 1.35rem;
-        background: var(--panel);
-      }
-
-      .gallery-hero .media {
-        min-height: 100%;
-        border-radius: 1.9rem 1.35rem 1.65rem 1.15rem;
-      }
-
-      .house-copy {
+      .product-grid {
         display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
-      }
-
-      .card {
-        padding: 1.55rem;
-        border-radius: 1.35rem 1.85rem 1.4rem 1.55rem;
-        background: var(--panel);
-      }
-
-      .card--accent {
-        background:
-          radial-gradient(circle at top left, rgba(255, 240, 210, 0.86), transparent 26%),
-          linear-gradient(150deg, rgba(241, 217, 179, 0.72), rgba(255, 251, 246, 0.96) 56%, rgba(220, 233, 237, 0.86));
-      }
-
-      .card h3,
-      .visit-panel h3 {
-        font-size: 1.95rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .note-grid,
-      .moment-grid,
-      .cards-grid,
-      .social-grid,
-      .gallery-grid,
-      .event-grid,
-      .visit-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .note-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .mini-note,
-      .moment,
-      .social-card {
-        padding: 1rem 1.05rem;
-        border: 1px solid rgba(48, 31, 18, 0.1);
-        border-radius: 1rem 1.3rem 1rem 1.1rem;
-        background: rgba(255, 255, 255, 0.58);
-      }
-
-      .mini-note strong,
-      .social-card strong {
-        display: block;
-        margin-bottom: 0.3rem;
-      }
-
-      .mini-note p,
-      .moment p {
-        margin: 0;
-        color: var(--ink-soft);
-      }
-
-      .moment-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .moment strong {
-        display: block;
-        margin-bottom: 0.35rem;
-        color: var(--sea);
-        font-size: 0.8rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .product-card {
         overflow: hidden;
-        padding: 0;
       }
 
-      .product-card .media {
-        height: 320px;
+      .product-media {
+        aspect-ratio: 16 / 11;
+        background: var(--surface-soft);
       }
 
-      .product-card:nth-child(1) .media {
-        border-radius: 1.35rem 1.8rem 0 0;
+      .product-body {
+        padding: 1.15rem;
       }
 
-      .product-card:nth-child(2) .media {
-        border-radius: 1rem 2rem 0 0;
-      }
-
-      .product-card:nth-child(3) .media {
-        border-radius: 1.25rem 1.35rem 0 0;
-      }
-
-      .product-card__body {
-        padding: 1.4rem;
-      }
-
-      .product-card__body h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.55rem;
-      }
-
-      .product-card__body p {
-        margin: 0 0 1rem;
+      .product-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.45rem;
       }
 
       .product-list {
-        display: grid;
-        gap: 0.65rem;
-        margin: 0;
+        margin: 0.9rem 0 0;
         padding: 0;
         list-style: none;
+        display: grid;
+        gap: 0.45rem;
       }
 
       .product-list li {
-        padding-top: 0.7rem;
-        border-top: 1px dashed rgba(48, 31, 18, 0.14);
-        font-weight: 700;
+        color: var(--text);
+        font-size: 0.96rem;
       }
 
-      .gallery-grid {
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-      }
-
-      .gallery-tile,
-      .event-card {
-        overflow: hidden;
-        border-radius: 1.3rem 1.8rem 1.35rem 1.45rem;
+      .product-note {
+        padding: 1rem 1.1rem;
+        background: var(--surface-soft);
         border: 1px solid var(--line);
-        box-shadow: var(--shadow);
-        background: var(--panel-strong);
+        border-radius: var(--radius-sm);
+        color: var(--text);
       }
 
-      .gallery-tile .media {
-        aspect-ratio: 1 / 1;
-      }
-
-      .gallery-tile--wide {
-        grid-column: span 7;
-      }
-
-      .gallery-tile--tall {
-        grid-column: span 5;
-      }
-
-      .gallery-tile--portrait,
-      .gallery-tile--square {
-        grid-column: span 4;
-      }
-
-      .gallery-tile--large {
-        grid-column: span 8;
-      }
-
-      .gallery-tile--wide .media,
-      .gallery-tile--large .media {
-        aspect-ratio: 16 / 10;
-      }
-
-      .gallery-tile--tall .media,
-      .gallery-tile--portrait .media {
-        aspect-ratio: 4 / 5;
-      }
-
-      .gallery-tile__body,
-      .event-card__body {
-        padding: 0.95rem 1rem 1.1rem;
-      }
-
-      .gallery-tile__body strong,
-      .event-card__body strong {
-        display: block;
-        margin-bottom: 0.22rem;
-      }
-
-      .gallery-tile__body span,
-      .event-card__body span {
-        color: var(--ink-soft);
-      }
-
-      .event-band {
-        border-block: 1px solid rgba(48, 31, 18, 0.08);
-        background: linear-gradient(180deg, rgba(255, 249, 240, 0.8), rgba(255, 255, 255, 0.36));
-      }
-
-      .event-layout {
-        display: grid;
-        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
-        gap: 1rem;
-      }
-
-      .event-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .event-card .media {
-        aspect-ratio: 4 / 5;
-      }
-
-      .visit-grid {
-        grid-template-columns: 0.92fr 1.08fr;
-      }
-
-      .hours-list {
-        display: grid;
-        gap: 0.7rem;
-        margin: 1rem 0 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .hours-list li {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 0.9rem 1rem;
-        border: 1px solid rgba(48, 31, 18, 0.08);
-        border-radius: 1rem 1.3rem 1rem 1.1rem;
-        background: rgba(255, 255, 255, 0.58);
-      }
-
-      .hours-list li.is-today {
-        border-color: rgba(34, 74, 90, 0.22);
-        background: rgba(220, 233, 237, 0.56);
-      }
-
-      .hours-note {
-        margin: 1rem 0 0;
-      }
-
-      .social-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-top: 1rem;
-      }
-
-      .visit-panel {
-        padding: 1.5rem;
-        border-radius: 1.4rem 1.95rem 1.45rem 1.55rem;
-        background: var(--panel);
-      }
-
-      .address-block {
-        padding: 1.1rem;
-        margin: 1rem 0;
-        border: 1px solid rgba(48, 31, 18, 0.09);
-        border-radius: 1rem 1.3rem 1rem 1.15rem;
-        background: rgba(255, 255, 255, 0.56);
-      }
-
-      .address-block strong {
+      .product-note strong {
         display: block;
         margin-bottom: 0.25rem;
       }
 
-      .contact-lines {
+      .about-layout,
+      .visit-layout {
         display: grid;
-        gap: 0.65rem;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+        gap: 1rem;
+      }
+
+      .about-photo,
+      .map {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .about-card,
+      .hours-card,
+      .contact-card {
+        padding: 1.4rem;
+      }
+
+      .about-card h3,
+      .hours-card h3,
+      .contact-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .about-points {
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .about-points li {
+        color: var(--text);
+      }
+
+      .visit-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .hours-list {
+        display: grid;
+        gap: 0.6rem;
         margin-top: 1rem;
       }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition:
-          opacity 0.55s ease,
-          transform 0.55s ease;
+      .hours-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 1rem;
+        border-radius: var(--radius-sm);
+        background: #faf6ef;
+        border: 1px solid #e8ddcf;
       }
 
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
+      .hours-row.is-today {
+        background: #eef1e7;
+        border-color: #d6dcc8;
+      }
+
+      .hours-row span {
+        color: var(--text);
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .contact-line {
+        padding: 0.95rem 1rem;
+        border-radius: var(--radius-sm);
+        background: #faf6ef;
+        border: 1px solid #e8ddcf;
+        color: var(--text);
+      }
+
+      .contact-line strong {
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .contact-actions {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .map {
+        min-height: 280px;
+        aspect-ratio: auto;
+      }
+
+      .map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .link-card {
+        padding: 1rem;
+      }
+
+      .link-card strong {
+        display: block;
+        margin-bottom: 0.2rem;
       }
 
       .site-footer {
-        padding: 0 0 3rem;
+        padding: 0 0 2rem;
       }
 
-      .site-footer__inner {
-        padding: 2rem 0 0;
-      }
-
-      .site-footer__panel {
+      .footer-card {
         display: grid;
-        grid-template-columns: 1.3fr 0.9fr 0.9fr;
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
         gap: 1rem;
-        padding: 1.8rem;
-        border-radius: 2rem 1.7rem 1.2rem 1.7rem;
-        color: #fbf6ee;
-        background:
-          radial-gradient(circle at top right, rgba(247, 204, 138, 0.14), transparent 22%),
-          rgba(25, 18, 13, 0.96);
-        box-shadow: 0 42px 100px rgba(26, 18, 13, 0.22);
+        padding: 1.4rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
       }
 
-      .site-footer h3 {
-        margin-bottom: 0.8rem;
-        font-size: 2rem;
+      .footer-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 0.5rem;
       }
 
-      .site-footer p,
-      .site-footer li,
-      .site-footer a {
-        color: rgba(251, 246, 238, 0.76);
-      }
-
-      .site-footer ul {
-        display: grid;
-        gap: 0.55rem;
+      .footer-card ul {
         margin: 0;
         padding: 0;
         list-style: none;
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .footer-card li,
+      .footer-card a {
+        color: var(--muted);
       }
 
       .mobile-bar {
         display: none;
       }
 
-      @media (max-width: 1080px) {
-        .header-inner,
+      @media (max-width: 900px) {
         .hero-grid,
-        .house-grid,
-        .event-layout,
-        .visit-grid,
-        .site-footer__panel {
+        .about-layout,
+        .visit-layout,
+        .footer-card {
           grid-template-columns: 1fr;
         }
 
-        .status-row,
-        .note-grid,
-        .moment-grid,
-        .cards-grid,
-        .social-grid,
-        .event-grid {
+        .quick-grid,
+        .product-grid,
+        .links-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .gallery-tile--wide,
-        .gallery-tile--tall,
-        .gallery-tile--portrait,
-        .gallery-tile--square,
-        .gallery-tile--large {
-          grid-column: span 6;
-        }
-
-        .main-nav {
-          justify-content: flex-start;
         }
       }
 
-      @media (max-width: 760px) {
+      @media (max-width: 720px) {
         html {
-          scroll-padding-top: 5.5rem;
+          scroll-padding-top: 4.6rem;
         }
 
-        .header-inner,
-        .section,
-        .site-footer__inner {
-          width: min(var(--max), calc(100% - 1.2rem));
+        body {
+          padding-bottom: 5.8rem;
         }
 
-        .main-nav {
-          flex-wrap: nowrap;
+        .container {
+          width: calc(100% - 1.2rem);
+        }
+
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 0.85rem 0;
+        }
+
+        .nav {
+          width: 100%;
+          justify-content: flex-start;
           overflow-x: auto;
-          scrollbar-width: none;
+          flex-wrap: nowrap;
         }
 
-        .main-nav::-webkit-scrollbar {
-          display: none;
+        .quick-grid,
+        .product-grid,
+        .links-grid {
+          grid-template-columns: 1fr;
         }
 
         .hero h1 {
           max-width: 100%;
-          font-size: clamp(2.8rem, 15vw, 4.8rem);
+          font-size: clamp(2.5rem, 12vw, 4rem);
         }
 
-        .hero-mosaic,
-        .status-row,
-        .note-grid,
-        .moment-grid,
-        .cards-grid,
-        .event-grid,
-        .social-grid {
-          grid-template-columns: 1fr;
+        .hero-actions,
+        .contact-actions {
+          flex-direction: column;
         }
 
-        .hero-mosaic {
-          grid-template-rows: 320px 220px 220px;
+        .button {
+          width: 100%;
         }
 
-        .mosaic-main {
-          grid-row: auto;
-        }
-
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .gallery-tile--wide,
-        .gallery-tile--tall,
-        .gallery-tile--portrait,
-        .gallery-tile--square,
-        .gallery-tile--large {
-          grid-column: auto;
-        }
-
-        .hours-list li {
+        .hours-row {
           flex-direction: column;
         }
 
         .mobile-bar {
           position: fixed;
-          left: 0.75rem;
-          right: 0.75rem;
-          bottom: 0.75rem;
-          z-index: 50;
+          left: 0.6rem;
+          right: 0.6rem;
+          bottom: 0.6rem;
+          z-index: 60;
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 0.65rem;
-          padding: 0.65rem;
-          border: 1px solid rgba(48, 31, 18, 0.08);
-          border-radius: 1.15rem 1.45rem 1.15rem 1.25rem;
-          background: rgba(255, 251, 245, 0.9);
-          backdrop-filter: blur(16px);
-          box-shadow: 0 18px 40px rgba(25, 18, 12, 0.14);
+          gap: 0.6rem;
+          padding: 0.6rem;
+          background: rgba(255, 253, 249, 0.96);
+          border: 1px solid var(--line);
+          border-radius: 16px;
         }
 
         .mobile-bar a {
@@ -941,37 +630,24 @@
           align-items: center;
           justify-content: center;
           min-height: 3rem;
-          padding: 0.8rem 0.65rem;
-          border-radius: 0.9rem 1.15rem 0.95rem 1rem;
-          border: 1px solid rgba(48, 31, 18, 0.08);
-          background: rgba(255, 255, 255, 0.72);
+          padding: 0.8rem 0.5rem;
+          border-radius: 12px;
+          background: var(--surface);
+          border: 1px solid var(--line);
           font-weight: 700;
+          text-align: center;
         }
 
         .mobile-bar a:first-child {
-          color: #fff8f0;
-          border-color: transparent;
-          background: linear-gradient(135deg, var(--copper), #de9754);
-        }
-
-        body {
-          padding-bottom: 6rem;
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #fffaf4;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
-        }
-
-        .reveal {
-          opacity: 1;
-          transform: none;
-          transition: none;
-        }
-
-        * {
-          transition: none !important;
         }
       }
     </style>
@@ -980,541 +656,335 @@
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <header class="site-header">
-      <div class="header-inner">
+      <div class="container header-inner">
         <a class="brand" href="#haut" aria-label="Retour en haut">
-          <span class="brand__crest">K</span>
-          <span class="brand__text">
+          <span class="brand-mark">K</span>
+          <span class="brand-text">
             <strong>La Boulangerie du Kreisker</strong>
-            <span>Saint-Pol-de-Leon · Finistere nord</span>
+            <span>Saint-Pol-de-Leon</span>
           </span>
         </a>
 
-        <nav class="main-nav" aria-label="Navigation principale">
-          <a href="#maison">La maison</a>
-          <a href="#gamme">La gamme</a>
-          <a href="#galerie">La vitrine</a>
-          <a href="#creations">Creations</a>
-          <a href="#venir">Venir</a>
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="#produits">Produits</a>
+          <a href="#horaires">Horaires</a>
+          <a href="#apropos">A propos</a>
+          <a href="#contact">Contact</a>
+          <a class="button button--primary" href="tel:+33298690219">Appeler</a>
         </nav>
-
-        <a class="header-cta" href="tel:+33298690219">Appeler</a>
       </div>
     </header>
 
     <main id="contenu">
       <section class="section hero" id="haut">
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <span class="eyebrow">Boulangerie artisanale · Saint-Pol-de-Leon</span>
-            <h1>Une vitrine gourmande qui donne envie d'entrer tout de suite.</h1>
-            <p class="lede">
-              Pains du quotidien, viennoiseries maison, pause dejeuner, patisseries
-              gourmandes et creations sur commande au coeur de la rue Cadiou.
-            </p>
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Boulangerie artisanale familiale</span>
+              <h1>La boulangerie de village, simple, bonne et facile a trouver.</h1>
+              <p>
+                Pains du quotidien, viennoiseries maison, patisseries et accueil de
+                proximite au coeur de Saint-Pol-de-Leon.
+              </p>
 
-            <div class="hero-actions">
-              <a class="button button--solid" href="tel:+33298690219">Appeler la boulangerie</a>
-              <a class="button button--ghost" href="#venir">Voir les horaires</a>
+              <div class="hero-actions">
+                <a class="button button--primary" href="#produits">Voir nos produits</a>
+                <a class="button button--secondary" href="#horaires">Horaires</a>
+              </div>
+
+              <div class="quick-grid">
+                <article class="quick-card quick-card--status">
+                  <strong id="status-label">Aujourd'hui</strong>
+                  <p id="status-detail">Chargement...</p>
+                </article>
+                <article class="quick-card">
+                  <strong>Telephone</strong>
+                  <p>02 98 69 02 19</p>
+                </article>
+                <article class="quick-card">
+                  <strong>Adresse</strong>
+                  <p>10 rue Cadiou, 29250 Saint-Pol-de-Leon</p>
+                </article>
+                <article class="quick-card">
+                  <strong>Essentiel</strong>
+                  <p>Pains, viennoiseries, patisseries, commandes</p>
+                </article>
+              </div>
             </div>
 
-            <div class="status-row">
-              <div class="status" id="status-card" data-open="false">
-                <strong id="status-label">Horaires du jour</strong>
-                <small id="status-detail">Chargement...</small>
-              </div>
-              <div class="fact">
-                <strong>Adresse</strong>
-                <small>10 rue Cadiou, 29250 Saint-Pol-de-Leon</small>
-              </div>
-              <div class="fact">
-                <strong>Maison</strong>
-                <small>Viennoiseries, dejeuner rapide, patisseries et commandes</small>
-              </div>
-            </div>
-
-            <div class="hero-meta">
-              <a
-                href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Ouvrir l'itineraire
-              </a>
-              <a
-                href="https://www.tripadvisor.fr/Restaurant_Review-g660194-d13948092-Reviews-Boulangerie_du_Kreisker-Saint_Pol_de_Leon_Finistere_Brittany.html"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Voir les avis TripAdvisor
-              </a>
+            <div class="hero-photo">
+              <img
+                src="./src/assets/kreisker/vitrine-patisseries.jpg"
+                alt="Vitrine de patisseries a la Boulangerie du Kreisker"
+              />
             </div>
           </div>
-
-          <div class="hero-frame reveal">
-            <div class="hero-mosaic">
-              <figure class="media mosaic-main">
-                <img
-                  src="./src/assets/kreisker/vitrine-patisseries.jpg"
-                  alt="Vitrine de patisseries colorees a la Boulangerie du Kreisker"
-                />
-                <figcaption class="media-caption">
-                  <strong>La vitrine du moment</strong>
-                  <span>Entremets, fruits, chocolat et couleurs de saison.</span>
-                </figcaption>
-              </figure>
-
-              <figure class="media mosaic-top">
-                <img
-                  src="./src/assets/kreisker/facade-kreisker.jpg"
-                  alt="Facade de la Boulangerie du Kreisker a Saint-Pol-de-Leon"
-                  loading="lazy"
-                />
-                <figcaption class="media-caption">
-                  <strong>Rue Cadiou</strong>
-                  <span>Une adresse locale facile a reperer.</span>
-                </figcaption>
-              </figure>
-
-              <figure class="media mosaic-bottom">
-                <img
-                  src="./src/assets/kreisker/petits-gateaux-vitrine.jpg"
-                  alt="Assortiment de petits gateaux en vitrine"
-                  loading="lazy"
-                />
-                <figcaption class="media-caption">
-                  <strong>Le comptoir gourmand</strong>
-                  <span>Des desserts qui donnent faim au premier regard.</span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-
-        <div class="signature-rail reveal" aria-label="Points forts">
-          <div class="signature-chip">Pain artisanal et viennoiseries maison</div>
-          <div class="signature-chip">Pause dejeuner rapide au centre-ville</div>
-          <div class="signature-chip">Patisseries et creations sur commande</div>
         </div>
       </section>
 
-      <section class="section" id="maison">
-        <div class="section-head reveal">
-          <span class="eyebrow">La maison</span>
-          <h2>Un site simple, vivant et ancre dans la vraie boulangerie.</h2>
-          <p class="section-intro">
-            L'idee est de montrer la Boulangerie du Kreisker comme on la ressent sur place :
-            une facade reconnaissable, une offre lisible et une ambiance artisanale qui met
-            les produits en avant sans artifices.
-          </p>
-        </div>
+      <section class="section" id="produits">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Nos produits</span>
+            <h2>Ce que l'on vient chercher ici.</h2>
+            <p>
+              Une lecture simple, sans surcharge, pour voir rapidement l'essentiel de la
+              boulangerie.
+            </p>
+          </div>
 
-        <div class="house-grid">
-          <div class="gallery-hero reveal">
-            <figure class="media">
+          <div class="products-layout">
+            <div class="product-grid">
+              <article class="product-card">
+                <div class="product-media">
+                  <img
+                    src="./src/assets/kreisker/collage-viennoiseries.jpg"
+                    alt="Viennoiseries de la boulangerie"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="product-body">
+                  <h3>Viennoiseries</h3>
+                  <p>Pour le matin et les habitudes du quotidien.</p>
+                  <ul class="product-list">
+                    <li>Croissants</li>
+                    <li>Pains au chocolat</li>
+                    <li>Gourmandises du matin</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <img
+                    src="./src/assets/kreisker/sandwiches-saumon.jpg"
+                    alt="Snacking et sandwiches"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="product-body">
+                  <h3>Snacking</h3>
+                  <p>Une pause dejeuner rapide, lisible et pratique.</p>
+                  <ul class="product-list">
+                    <li>Sandwiches</li>
+                    <li>Bouchees salees</li>
+                    <li>Petite restauration</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <img
+                    src="./src/assets/kreisker/pavlova-fruits-rouges.jpg"
+                    alt="Patisseries et desserts"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="product-body">
+                  <h3>Patisseries</h3>
+                  <p>Des desserts de vitrine pour le gouter ou le week-end.</p>
+                  <ul class="product-list">
+                    <li>Entremets</li>
+                    <li>Fruits rouges</li>
+                    <li>Gateaux individuels</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <img
+                    src="./src/assets/kreisker/presentoir-gateaux.jpg"
+                    alt="Presentoir de gateaux"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="product-body">
+                  <h3>Commandes</h3>
+                  <p>Pour les anniversaires et les moments a partager.</p>
+                  <ul class="product-list">
+                    <li>Gateaux</li>
+                    <li>Creations festives</li>
+                    <li>Selon demande</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+
+            <div class="product-note">
+              <strong>Pains du quotidien</strong>
+              La page met l'accent sur les visuels disponibles, mais la boulangerie reste
+              avant tout une maison de pains, viennoiseries et produits de tous les jours.
+              Pour une demande precise ou une commande, le plus simple reste d'appeler.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="apropos">
+        <div class="container">
+          <div class="about-layout">
+            <div class="about-photo">
               <img
                 src="./src/assets/kreisker/facade-kreisker.jpg"
-                alt="Devanture en pierre de la Boulangerie du Kreisker"
+                alt="Facade de la Boulangerie du Kreisker"
+                loading="lazy"
               />
-              <figcaption class="media-caption">
-                <strong>10 rue Cadiou</strong>
-                <span>Une boulangerie de quartier, facile a trouver et facile a retenir.</span>
-              </figcaption>
-            </figure>
-          </div>
+            </div>
 
-          <div class="house-copy">
-            <article class="card card--accent reveal">
-              <span class="eyebrow">Esprit du lieu</span>
-              <h3>La chaleur d'une vraie boutique, pas d'un site generique.</h3>
+            <div class="about-card">
+              <span class="eyebrow">A propos</span>
+              <h3>Une boulangerie de commune, artisanale et proche de ses clients.</h3>
               <p>
-                Le parcours raconte une journee concrete : les premieres envies du matin,
-                la pause dejeuner, le dessert du week-end puis les creations festives.
+                Le site est pense comme la boutique : clair, simple et accueillant. On y
+                trouve tout de suite les informations utiles, sans effets inutiles.
               </p>
-            </article>
-
-            <div class="note-grid">
-              <article class="mini-note reveal">
-                <strong>Une adresse claire</strong>
-                <p>La facade, la rue Cadiou et les horaires deviennent des reperes immediats.</p>
-              </article>
-              <article class="mini-note reveal">
-                <strong>Une offre lisible</strong>
-                <p>Pains, snacking, patisseries et commandes sont comprenables en quelques secondes.</p>
-              </article>
-              <article class="mini-note reveal">
-                <strong>Une presence locale</strong>
-                <p>Facebook, TripAdvisor et l'acces direct renforcent la confiance.</p>
-              </article>
-            </div>
-
-            <div class="moment-grid">
-              <article class="moment reveal">
-                <strong>Le matin</strong>
-                <p>Viennoiseries maison et premieres fournissees.</p>
-              </article>
-              <article class="moment reveal">
-                <strong>Le midi</strong>
-                <p>Pause dejeuner rapide, lisible et facile a emporter.</p>
-              </article>
-              <article class="moment reveal">
-                <strong>Les grands jours</strong>
-                <p>Gateaux, entremets et pieces montees pour les evenements.</p>
-              </article>
+              <ul class="about-points">
+                <li>Une presence locale facile a identifier</li>
+                <li>Des produits du quotidien et des douceurs maison</li>
+                <li>Un contact rapide par telephone et un acces simple</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="gamme">
-        <div class="section-head reveal">
-          <span class="eyebrow">La gamme</span>
-          <h2>Une lecture claire entre fournil du matin, comptoir sale et vitrine sucree.</h2>
-          <p class="section-intro">
-            Tout ce qui doit donner envie est montre tout de suite : du quotidien, du pratique,
-            puis du gourmand.
-          </p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card product-card reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/collage-viennoiseries.jpg"
-                alt="Croissants et viennoiseries de la boulangerie"
-              />
-            </figure>
-            <div class="product-card__body">
-              <h3>Viennoiseries et premieres envies</h3>
-              <p>Le matin se raconte avec des produits dores, simples et irresistibles.</p>
-              <ul class="product-list">
-                <li>Croissants dores</li>
-                <li>Pains au chocolat</li>
-                <li>Premieres fournissees</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="card product-card reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/sandwiches-saumon.jpg"
-                alt="Sandwiches au saumon en vitrine"
-                loading="lazy"
-              />
-            </figure>
-            <div class="product-card__body">
-              <h3>Pause dejeuner et comptoir sale</h3>
-              <p>Une offre visible et pratique pour les gens du coin comme pour les visiteurs.</p>
-              <ul class="product-list">
-                <li>Sandwiches au saumon</li>
-                <li>Bouchees salees</li>
-                <li>Pause rapide au centre-ville</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="card product-card reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/pavlova-fruits-rouges.jpg"
-                alt="Pavlova aux fruits rouges"
-                loading="lazy"
-              />
-            </figure>
-            <div class="product-card__body">
-              <h3>Patisseries et desserts de vitrine</h3>
-              <p>Des visuels forts pour le dessert, le gouter ou l'envie de derniere minute.</p>
-              <ul class="product-list">
-                <li>Pavlovas et fruits rouges</li>
-                <li>Entremets de vitrine</li>
-                <li>Desserts du week-end</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="galerie">
-        <div class="section-head reveal">
-          <span class="eyebrow">La vitrine</span>
-          <h2>Une selection de photos qui fait exister la boutique avant meme la visite.</h2>
-          <p class="section-intro">
-            Textures, creme, fruits, feuilletage et petits gateaux : la page doit donner faim
-            avant meme de prendre l'itineraire.
-          </p>
-        </div>
-
-        <div class="gallery-grid">
-          <article class="gallery-tile gallery-tile--wide reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/bouchees-salees.jpg"
-                alt="Bouchees feuilletees salees"
-                loading="lazy"
-              />
-            </figure>
-            <div class="gallery-tile__body">
-              <strong>Bouchees feuilletees</strong>
-              <span>Une proposition salee qui attire l'oeil en vitrine.</span>
-            </div>
-          </article>
-
-          <article class="gallery-tile gallery-tile--tall reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/gateau-ananas-anniversaire.jpg"
-                alt="Gateau anniversaire avec ananas et creme"
-                loading="lazy"
-              />
-            </figure>
-            <div class="gallery-tile__body">
-              <strong>Gateau anniversaire</strong>
-              <span>Une finition genereuse et partageuse.</span>
-            </div>
-          </article>
-
-          <article class="gallery-tile gallery-tile--portrait reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/gateau-chantilly-blanc.jpg"
-                alt="Gateau blanc a la chantilly"
-                loading="lazy"
-              />
-            </figure>
-            <div class="gallery-tile__body">
-              <strong>Chantilly et matiere</strong>
-              <span>Un travail de decor qui montre la main artisanale.</span>
-            </div>
-          </article>
-
-          <article class="gallery-tile gallery-tile--square reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/presentoir-gateaux.jpg"
-                alt="Presentoir refrigere avec plusieurs gateaux"
-                loading="lazy"
-              />
-            </figure>
-            <div class="gallery-tile__body">
-              <strong>Le presentoir du jour</strong>
-              <span>Des gateaux prets a partir en boutique.</span>
-            </div>
-          </article>
-
-          <article class="gallery-tile gallery-tile--large reveal">
-            <figure class="media">
-              <img
-                src="./src/assets/kreisker/gateau-fraise-part.jpg"
-                alt="Part de gateau aux fruits rouges et creme"
-                loading="lazy"
-              />
-            </figure>
-            <div class="gallery-tile__body">
-              <strong>Part gourmande</strong>
-              <span>Textures, creme et fruits rouges au plus pres du comptoir.</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section event-band" id="creations">
-        <div class="event-layout">
-          <article class="card card--accent reveal">
-            <span class="eyebrow">Creations</span>
-            <h3>Du quotidien jusqu'aux grandes occasions.</h3>
+      <section class="section" id="horaires">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Horaires et contact</span>
+            <h2>Les informations critiques, tout de suite.</h2>
             <p>
-              La boulangerie ne montre pas seulement de la vitrine : elle sait aussi prolonger
-              l'experience avec des gateaux de commande, des tartes genereuses et des pieces
-              montees pour les moments importants.
+              Horaires, telephone, adresse et acces sont prioritaires parce que la majorite des
+              clients viennent depuis leur telephone.
             </p>
-            <ul class="product-list">
-              <li>Gateaux de commande</li>
-              <li>Pieces montees</li>
-              <li>Desserts festifs et ceremoniels</li>
-            </ul>
-          </article>
-
-          <div class="event-grid">
-            <article class="event-card reveal">
-              <figure class="media">
-                <img
-                  src="./src/assets/kreisker/piece-montee-choux-detail.jpg"
-                  alt="Detail de piece montee de choux"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="event-card__body">
-                <strong>Detail de piece montee</strong>
-                <span>Une creation tres visuelle, pensee pour marquer l'instant.</span>
-              </div>
-            </article>
-
-            <article class="event-card reveal">
-              <figure class="media">
-                <img
-                  src="./src/assets/kreisker/tarte-fruits-creation.png"
-                  alt="Grande tarte rectangulaire garnie de fruits"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="event-card__body">
-                <strong>Tarte fruitee</strong>
-                <span>Couleurs de saison et presentation genereuse.</span>
-              </div>
-            </article>
-
-            <article class="event-card reveal">
-              <figure class="media">
-                <img
-                  src="./src/assets/kreisker/piece-montee-choux.png"
-                  alt="Piece montee de choux"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="event-card__body">
-                <strong>Piece montee</strong>
-                <span>Une signature festive qui donne de la hauteur a la page.</span>
-              </div>
-            </article>
-
-            <article class="event-card reveal">
-              <figure class="media">
-                <img
-                  src="./src/assets/kreisker/piece-montee-communion.png"
-                  alt="Creation de communion"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="event-card__body">
-                <strong>Creation de communion</strong>
-                <span>Un visuel ceremoniel pour montrer le savoir-faire maison.</span>
-              </div>
-            </article>
           </div>
-        </div>
-      </section>
 
-      <section class="section" id="venir">
-        <div class="section-head reveal">
-          <span class="eyebrow">Venir a la boulangerie</span>
-          <h2>Toutes les informations utiles, sans chercher.</h2>
-          <p class="section-intro">
-            Horaires, adresse, telephone et liens locaux sont directement visibles pour faciliter
-            la visite, l'appel ou l'itineraire.
-          </p>
-        </div>
+          <div class="visit-layout">
+            <div class="visit-grid">
+              <article class="hours-card">
+                <h3>Horaires</h3>
+                <div class="hours-list" id="hours-list">
+                  <div class="hours-row" data-day="monday">
+                    <strong>Lundi</strong>
+                    <span>Ferme</span>
+                  </div>
+                  <div class="hours-row" data-day="tuesday">
+                    <strong>Mardi</strong>
+                    <span>07:00 - 19:00</span>
+                  </div>
+                  <div class="hours-row" data-day="wednesday">
+                    <strong>Mercredi</strong>
+                    <span>07:00 - 19:00</span>
+                  </div>
+                  <div class="hours-row" data-day="thursday">
+                    <strong>Jeudi</strong>
+                    <span>07:00 - 19:00</span>
+                  </div>
+                  <div class="hours-row" data-day="friday">
+                    <strong>Vendredi</strong>
+                    <span>07:00 - 19:00</span>
+                  </div>
+                  <div class="hours-row" data-day="saturday">
+                    <strong>Samedi</strong>
+                    <span>07:00 - 19:00</span>
+                  </div>
+                  <div class="hours-row" data-day="sunday">
+                    <strong>Dimanche</strong>
+                    <span>07:00 - 12:30</span>
+                  </div>
+                </div>
+              </article>
 
-        <div class="visit-grid">
-          <article class="card card--accent reveal">
-            <h3>Horaires</h3>
-            <ul class="hours-list" id="hours-list">
-              <li data-day="monday"><strong>Lundi</strong><span>Ferme</span></li>
-              <li data-day="tuesday"><strong>Mardi</strong><span>07:00 - 19:00</span></li>
-              <li data-day="wednesday"><strong>Mercredi</strong><span>07:00 - 19:00</span></li>
-              <li data-day="thursday"><strong>Jeudi</strong><span>07:00 - 19:00</span></li>
-              <li data-day="friday"><strong>Vendredi</strong><span>07:00 - 19:00</span></li>
-              <li data-day="saturday"><strong>Samedi</strong><span>07:00 - 19:00</span></li>
-              <li data-day="sunday"><strong>Dimanche</strong><span>07:00 - 12:30</span></li>
-            </ul>
-            <p class="hours-note">
-              Horaires reprenant les informations que vous avez donnees : mardi a samedi
-              07:00-19:00, dimanche 07:00-12:30, lundi ferme.
-            </p>
-          </article>
+              <article class="contact-card" id="contact">
+                <h3>Contact</h3>
+                <div class="contact-grid">
+                  <div class="contact-line">
+                    <strong>Telephone</strong>
+                    <span>02 98 69 02 19</span>
+                  </div>
+                  <div class="contact-line">
+                    <strong>Adresse</strong>
+                    <span>10 rue Cadiou, 29250 Saint-Pol-de-Leon</span>
+                  </div>
+                </div>
 
-          <article class="visit-panel reveal">
-            <span class="eyebrow">Contact et acces</span>
-            <h3>La Boulangerie du Kreisker</h3>
-            <p>
-              Boulangerie artisanale a Saint-Pol-de-Leon, pensee pour les habitants du coin,
-              les passages du midi et les envies gourmandes.
-            </p>
+                <div class="contact-actions">
+                  <a class="button button--primary" href="tel:+33298690219">Appeler</a>
+                  <a
+                    class="button button--secondary"
+                    href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Itineraire
+                  </a>
+                </div>
 
-            <div class="address-block">
-              <strong>Adresse</strong>
-              <span>10 rue Cadiou, 29250 Saint-Pol-de-Leon</span>
+                <div class="links-grid">
+                  <a
+                    class="link-card"
+                    href="https://www.tripadvisor.fr/Restaurant_Review-g660194-d13948092-Reviews-Boulangerie_du_Kreisker-Saint_Pol_de_Leon_Finistere_Brittany.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <strong>TripAdvisor</strong>
+                    <p>Voir les avis et la reputation locale.</p>
+                  </a>
+                  <a
+                    class="link-card"
+                    href="https://www.facebook.com/112939582099551/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <strong>Facebook</strong>
+                    <p>Retrouver les photos et l'actualite de la boutique.</p>
+                  </a>
+                </div>
+              </article>
             </div>
 
-            <div class="visit-actions">
-              <a class="button button--solid" href="tel:+33298690219">02 98 69 02 19</a>
-              <a
-                class="button button--ghost"
-                href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Ouvrir Google Maps
-              </a>
+            <div class="map">
+              <iframe
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on&amp;output=embed"
+                title="Carte de la Boulangerie du Kreisker"
+              ></iframe>
             </div>
-
-            <div class="social-grid">
-              <a
-                class="social-card"
-                href="https://www.tripadvisor.fr/Restaurant_Review-g660194-d13948092-Reviews-Boulangerie_du_Kreisker-Saint_Pol_de_Leon_Finistere_Brittany.html"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <strong>TripAdvisor</strong>
-                <span>Une reputation locale deja visible sur les plateformes d'avis.</span>
-              </a>
-              <a
-                class="social-card"
-                href="https://www.facebook.com/112939582099551/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <strong>Facebook</strong>
-                <span>Des photos produits et de l'actualite qui prolongent la vitrine.</span>
-              </a>
-            </div>
-
-            <div class="contact-lines">
-              <a href="tel:+33298690219">Appeler la boulangerie</a>
-              <a
-                href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Itineraire direct vers la boutique
-              </a>
-            </div>
-          </article>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="site-footer__inner">
-        <div class="site-footer__panel">
+      <div class="container">
+        <div class="footer-card">
           <div>
-            <span class="eyebrow">Boulangerie artisanale</span>
-            <h3>Une page simple, belle et utilisable tout de suite.</h3>
+            <h3>La Boulangerie du Kreisker</h3>
             <p>
-              Cette version est volontairement en une seule page HTML, avec les photos locales,
-              les infos pratiques et une presentation plus chaleureuse et plus directe.
+              Une page volontairement simple, claire et rapide, centree sur ce qui compte
+              vraiment pour une boulangerie de commune.
             </p>
           </div>
 
           <div>
-            <span class="eyebrow">Navigation</span>
+            <strong>Navigation</strong>
             <ul>
-              <li><a href="#maison">La maison</a></li>
-              <li><a href="#gamme">La gamme</a></li>
-              <li><a href="#galerie">La vitrine</a></li>
-              <li><a href="#creations">Creations</a></li>
-              <li><a href="#venir">Venir</a></li>
+              <li><a href="#produits">Produits</a></li>
+              <li><a href="#horaires">Horaires</a></li>
+              <li><a href="#apropos">A propos</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <div>
-            <span class="eyebrow">Infos utiles</span>
+            <strong>Infos utiles</strong>
             <ul>
               <li>10 rue Cadiou</li>
               <li>29250 Saint-Pol-de-Leon</li>
               <li><a href="tel:+33298690219">02 98 69 02 19</a></li>
-              <li>Lundi ferme</li>
-              <li>Mar. au sam. 07:00 - 19:00</li>
-              <li>Dim. 07:00 - 12:30</li>
             </ul>
           </div>
         </div>
@@ -1523,6 +993,7 @@
 
     <div class="mobile-bar" aria-label="Actions rapides">
       <a href="tel:+33298690219">Appeler</a>
+      <a href="#horaires">Horaires</a>
       <a
         href="https://www.google.com/maps/search/?api=1&amp;query=10+rue+Cadiou+29250+Saint-Pol-de-L%C3%A9on"
         target="_blank"
@@ -1530,7 +1001,6 @@
       >
         Itineraire
       </a>
-      <a href="#venir">Horaires</a>
     </div>
 
     <script>
@@ -1565,16 +1035,11 @@
         }).value;
         const now = hour + ":" + minute;
         const intervals = schedule[day] || [];
-        const isOpen = intervals.some(function (interval) {
-          return now >= interval[0] && now <= interval[1];
-        });
 
-        const statusCard = document.getElementById("status-card");
         const statusLabel = document.getElementById("status-label");
         const statusDetail = document.getElementById("status-detail");
 
-        if (isOpen) {
-          statusCard.setAttribute("data-open", "true");
+        if (intervals.length && now >= intervals[0][0] && now <= intervals[0][1]) {
           statusLabel.textContent = "Ouvert maintenant";
           statusDetail.textContent = "Fermeture a " + intervals[0][1];
         } else if (intervals.length && now < intervals[0][0]) {
@@ -1582,36 +1047,13 @@
           statusDetail.textContent = "Ouverture a " + intervals[0][0];
         } else {
           statusLabel.textContent = "Ferme pour le moment";
-          statusDetail.textContent = "Voir les horaires ci-dessous";
+          statusDetail.textContent = "Voir les horaires plus bas";
         }
 
         const todayRow = document.querySelector('[data-day="' + day + '"]');
         if (todayRow) {
           todayRow.classList.add("is-today");
         }
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          document.querySelectorAll(".reveal").forEach(function (element) {
-            element.classList.add("is-visible");
-          });
-          return;
-        }
-
-        const observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.16 }
-        );
-
-        document.querySelectorAll(".reveal").forEach(function (element) {
-          observer.observe(element);
-        });
       })();
     </script>
   </body>
