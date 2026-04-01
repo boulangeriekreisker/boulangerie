@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type ContactState =
@@ -39,14 +40,14 @@ export function ContactForm() {
         }),
       });
 
-      const payload = (await response.json()) as {
+      const payload = (await response.json().catch(() => null)) as {
         ok: boolean;
         mode?: "live" | "demo";
         message: string;
-      };
+      } | null;
 
-      if (!response.ok || !payload.ok) {
-        throw new Error(payload.message || "Une erreur est survenue.");
+      if (!payload || !response.ok || !payload.ok) {
+        throw new Error(payload?.message || "Une erreur est survenue. Merci de réessayer.");
       }
 
       setState({
@@ -66,43 +67,72 @@ export function ContactForm() {
   }
 
   return (
-    <form className="form-grid" onSubmit={handleSubmit}>
-      <div aria-hidden="true" className="field field--hidden">
-        <label htmlFor="company">Entreprise</label>
-        <input autoComplete="off" id="company" name="company" tabIndex={-1} type="text" />
+    <form aria-busy={state.kind === "sending"} className="form-grid" onSubmit={handleSubmit}>
+      <div className="field field--hidden" hidden>
+        <label htmlFor="company">Ne pas remplir ce champ</label>
+        <input
+          autoComplete="off"
+          id="company"
+          name="company"
+          type="text"
+        />
       </div>
 
-      <label className="field" htmlFor="name">
-        <span>Nom</span>
-        <input id="name" name="name" placeholder="Votre nom" required type="text" />
-      </label>
-
-      <label className="field" htmlFor="email">
-        <span>Email</span>
+      <div className="field">
+        <label htmlFor="name">Nom</label>
         <input
-          id="email"
-          name="email"
-          placeholder="vous@example.com"
+          autoComplete="name"
+          id="name"
+          maxLength={120}
+          minLength={2}
+          name="name"
+          placeholder="Marie Dupont…"
           required
+          type="text"
+        />
+      </div>
+
+      <div className="field">
+        <label htmlFor="email">Email</label>
+        <input
+          autoComplete="email"
+          id="email"
+          inputMode="email"
+          maxLength={160}
+          name="email"
+          placeholder="bonjour@exemple.fr…"
+          required
+          spellCheck={false}
           type="email"
         />
-      </label>
+      </div>
 
-      <label className="field field--full" htmlFor="message">
-        <span>Message</span>
+      <div className="field field--full">
+        <label htmlFor="message">Message</label>
         <textarea
+          autoComplete="off"
           id="message"
+          maxLength={2000}
+          minLength={10}
           name="message"
-          placeholder="Bonjour, je souhaite vous contacter au sujet de..."
+          placeholder="Bonjour, je souhaite vous contacter au sujet de votre boulangerie…"
           required
           rows={6}
         />
-      </label>
+      </div>
 
       <div className="field-actions">
         <button className="button button--primary" disabled={state.kind === "sending"} type="submit">
-          {state.kind === "sending" ? "Envoi..." : "Envoyer le message"}
+          {state.kind === "sending" ? "Envoi…" : "Envoyer le message"}
         </button>
+        <p className="form-note">
+          En envoyant ce message, vous acceptez le traitement de vos coordonnées pour recevoir une
+          réponse. Consultez la{" "}
+          <Link className="text-link" href="/politique-confidentialite">
+            politique de confidentialité
+          </Link>
+          .
+        </p>
       </div>
 
       <div aria-live="polite" className="form-status">

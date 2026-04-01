@@ -1,8 +1,9 @@
 import Image from "next/image";
 
+import { LiveBusinessStatusPill } from "@/components/LiveBusinessStatusPill";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionTitle } from "@/components/SectionTitle";
-import { formatIntervals, getBusinessStatus } from "@/lib/opening-hours";
+import { formatIntervals } from "@/lib/opening-hours";
 import {
   business,
   celebrationGallery,
@@ -19,8 +20,6 @@ import {
 } from "@/lib/site-data";
 
 export default function HomePage() {
-  const status = getBusinessStatus();
-
   return (
     <>
       <section className="hero section" id="top">
@@ -52,19 +51,21 @@ export default function HomePage() {
             </div>
 
             <div className="hero__meta">
-              <div className={`status-pill ${status.isOpen ? "status-pill--open" : ""}`}>
-                <span>{status.label}</span>
-                <small>{status.detail}</small>
-              </div>
+              <LiveBusinessStatusPill />
 
-              <a className="meta-link" href={business.mapUrl} rel="noreferrer" target="_blank">
+              <a
+                className="meta-link"
+                href={business.mapUrl}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
                 {business.addressLine}, {business.city}
               </a>
 
               <a
                 className="meta-link"
                 href={business.tripadvisorUrl}
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 target="_blank"
               >
                 Voir les avis TripAdvisor
@@ -83,8 +84,9 @@ export default function HomePage() {
                     alt={photo.alt}
                     className="hero-photo__image"
                     fill
+                    loading="eager"
                     placeholder="blur"
-                    priority={index === 0}
+                    preload={index === 0}
                     sizes={
                       index === 0
                         ? "(max-width: 1080px) 100vw, 38vw"
@@ -127,7 +129,6 @@ export default function HomePage() {
                 className="house-figure__image"
                 fill
                 placeholder="blur"
-                priority
                 sizes="(max-width: 1080px) 100vw, 42vw"
                 src={houseFeature.image}
                 style={{ objectPosition: houseFeature.objectPosition }}
@@ -311,7 +312,7 @@ export default function HomePage() {
                   className="local-link-card"
                   href={signal.href}
                   key={signal.label}
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                   target="_blank"
                 >
                   <strong>{signal.label}</strong>
@@ -328,17 +329,24 @@ export default function HomePage() {
             </h2>
             <div className="map-frame">
               <iframe
+                height="320"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 src={business.embedMapUrl}
                 title={`Carte de ${business.name}`}
+                width="100%"
               />
             </div>
             <div className="button-row">
               <a className="button button--primary" href={business.phoneHref}>
                 Appeler
               </a>
-              <a className="button button--ghost" href={business.mapUrl} rel="noreferrer" target="_blank">
+              <a
+                className="button button--ghost"
+                href={business.mapUrl}
+                rel="noreferrer noopener"
+                target="_blank"
+              >
                 Ouvrir Google Maps
               </a>
             </div>

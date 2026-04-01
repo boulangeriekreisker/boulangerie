@@ -9,15 +9,16 @@ import gateauFraisePartImage from "@/assets/kreisker/gateau-fraise-part.jpg";
 import pavlovaImage from "@/assets/kreisker/pavlova-fruits-rouges.jpg";
 import petitsGateauxImage from "@/assets/kreisker/petits-gateaux-vitrine.jpg";
 import pieceMonteeChouxDetailImage from "@/assets/kreisker/piece-montee-choux-detail.jpg";
-import pieceMonteeChouxImage from "@/assets/kreisker/piece-montee-choux.png";
-import pieceMonteeCommunionImage from "@/assets/kreisker/piece-montee-communion.png";
+import pieceMonteeChouxImage from "@/assets/kreisker/piece-montee-choux.jpg";
+import pieceMonteeCommunionImage from "@/assets/kreisker/piece-montee-communion.jpg";
 import presentoirGateauxImage from "@/assets/kreisker/presentoir-gateaux.jpg";
 import sandwichesSaumonImage from "@/assets/kreisker/sandwiches-saumon.jpg";
-import tarteFruitsCreationImage from "@/assets/kreisker/tarte-fruits-creation.png";
+import tarteFruitsCreationImage from "@/assets/kreisker/tarte-fruits-creation.jpg";
 import vitrinePatisseriesImage from "@/assets/kreisker/vitrine-patisseries.jpg";
 
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://boulangerie-du-kreisker.vercel.app";
+const fallbackSiteUrl = "https://boulangerie-du-kreisker.fr";
+
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? fallbackSiteUrl).replace(/\/+$/, "");
 
 export const business = {
   name: "La Boulangerie du Kreisker",
@@ -50,8 +51,14 @@ export const navigation = [
   { href: "/#selection", label: "Au comptoir" },
   { href: "/#creations", label: "Créations" },
   { href: "/#infos", label: "Infos pratiques" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#contact", label: "Formulaire" },
 ];
+
+export const utilityPages = [
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Nous contacter" },
+  { href: "/politique-confidentialite", label: "Confidentialité" },
+] as const;
 
 export const heroHighlights = [
   "Pain artisanal et viennoiseries maison",

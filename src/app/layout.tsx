@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
 import { Footer } from "@/components/Footer";
@@ -67,8 +67,10 @@ const structuredData = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: business.name,
+  category: "food",
   title: {
-    default: `Boulangerie artisanale à ${business.city} | ${business.name}`,
+    default: `${business.name} | ${business.city}`,
     template: `%s | ${business.name}`,
   },
   description:
@@ -77,8 +79,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   keywords: seoKeywords,
+  manifest: "/site.webmanifest",
   openGraph: {
-    title: `Boulangerie artisanale à ${business.city} | ${business.name}`,
+    title: `${business.name} | ${business.city}`,
     description:
       "Une vitrine locale et gourmande pour découvrir pains, viennoiseries, pâtisseries et créations sur commande à Saint-Pol-de-Léon.",
     url: siteUrl,
@@ -94,9 +97,22 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${business.name} | ${business.city}`,
+    description:
+      "Découvrez pains, viennoiseries, pâtisseries et créations sur commande à Saint-Pol-de-Léon.",
+    images: ["/og-kreisker.svg"],
+  },
   icons: {
     icon: "/icon.svg",
+    apple: "/icon.svg",
   },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#bd6a32",
 };
 
 export const revalidate = 3600;
@@ -124,12 +140,12 @@ export default function RootLayout({
             <a
               className="mobile-quick-actions__item"
               href={business.mapUrl}
-              rel="noreferrer"
+              rel="noreferrer noopener"
               target="_blank"
             >
               Itinéraire
             </a>
-            <a className="mobile-quick-actions__item" href="#contact">
+            <a className="mobile-quick-actions__item" href="/contact">
               Message
             </a>
           </div>

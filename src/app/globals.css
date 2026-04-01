@@ -72,6 +72,7 @@ body {
   font-family: var(--font-sans), sans-serif;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: rgba(189, 106, 50, 0.18);
 }
 
 body::before {
@@ -892,6 +893,7 @@ textarea:focus-visible {
 .map-frame iframe {
   display: block;
   width: 100%;
+  height: 320px;
   min-height: 320px;
 }
 
@@ -927,6 +929,7 @@ textarea:focus-visible {
   gap: 0.5rem;
 }
 
+.field label,
 .field span {
   font-weight: 700;
 }
@@ -939,7 +942,6 @@ textarea:focus-visible {
   border-radius: 1rem 1.35rem 1rem 1.2rem;
   background: var(--input-bg);
   color: var(--text-strong);
-  outline: none;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
@@ -957,8 +959,8 @@ textarea:focus-visible {
   resize: vertical;
 }
 
-.field input:focus,
-.field textarea:focus {
+.field input:focus-visible,
+.field textarea:focus-visible {
   border-color: rgba(35, 73, 91, 0.35);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 0 0 4px rgba(35, 73, 91, 0.08);
@@ -974,6 +976,12 @@ textarea:focus-visible {
 .field--hidden {
   position: absolute;
   left: -9999px;
+}
+
+.form-note {
+  margin: 0.95rem 0 0;
+  font-size: 0.92rem;
+  color: var(--text-soft);
 }
 
 .alert {
@@ -1037,6 +1045,58 @@ textarea:focus-visible {
   text-underline-offset: 0.18em;
 }
 
+.site-footer__legal {
+  margin: 1rem 0 0;
+  color: rgba(251, 246, 238, 0.72);
+}
+
+.site-footer__legal a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.page-hero {
+  padding-top: 2.2rem;
+}
+
+.page-actions,
+.content-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-actions {
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  align-items: flex-start;
+}
+
+.info-card--wide {
+  width: 100%;
+}
+
+.info-card--centered {
+  max-width: 54rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.legal-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.legal-card h2,
+.legal-card h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  line-height: 1.04;
+}
+
+.legal-card p,
+.legal-card li {
+  color: var(--text-soft);
+}
+
 .mobile-quick-actions {
   display: none;
 }
@@ -1059,6 +1119,10 @@ textarea:focus-visible {
   .site-header__actions {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  .page-actions {
+    grid-template-columns: 1fr;
   }
 
   .hero-proof-grid,

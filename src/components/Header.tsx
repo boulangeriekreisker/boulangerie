@@ -1,13 +1,13 @@
-import { getBusinessStatus } from "@/lib/opening-hours";
+import Link from "next/link";
+
+import { LiveBusinessStatusPill } from "@/components/LiveBusinessStatusPill";
 import { business, navigation } from "@/lib/site-data";
 
 export function Header() {
-  const status = getBusinessStatus();
-
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a aria-label={`Retour en haut - ${business.name}`} className="brand-mark" href="#top">
+        <Link className="brand-mark" href="/#top">
           <span className="brand-mark__crest">K</span>
           <span className="brand-mark__text">
             <strong>{business.name}</strong>
@@ -15,7 +15,7 @@ export function Header() {
               {business.city} · {business.region}
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav aria-label="Navigation principale" className="site-nav">
           {navigation.map((item) => (
@@ -26,10 +26,7 @@ export function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <div className={`status-pill ${status.isOpen ? "status-pill--open" : ""}`}>
-            <span>{status.label}</span>
-            <small>{status.detail}</small>
-          </div>
+          <LiveBusinessStatusPill />
 
           <a className="button button--primary button--compact" href={business.phoneHref}>
             Appeler

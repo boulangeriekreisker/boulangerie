@@ -1,4 +1,6 @@
-import { business, navigation } from "@/lib/site-data";
+import Link from "next/link";
+
+import { business, navigation, utilityPages } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -10,6 +12,14 @@ export function Footer() {
           <p className="site-footer__copy">
             Une vitrine locale, gourmande et rapide, pensée pour transformer une visite mobile en
             appel, en itinéraire ou en passage en boutique.
+          </p>
+          <p className="site-footer__legal">
+            {utilityPages.map((page, index) => (
+              <span key={page.href}>
+                {index > 0 ? " · " : ""}
+                <Link href={page.href}>{page.label}</Link>
+              </span>
+            ))}
           </p>
         </div>
 
@@ -35,7 +45,7 @@ export function Footer() {
               <a href={business.phoneHref}>{business.phoneDisplay}</a>
             </li>
             <li>
-              <a href={business.mapUrl} rel="noreferrer" target="_blank">
+              <a href={business.mapUrl} rel="noreferrer noopener" target="_blank">
                 Ouvrir l&apos;itinéraire
               </a>
             </li>
@@ -46,12 +56,12 @@ export function Footer() {
           <p className="site-footer__heading">Réputation</p>
           <ul className="site-footer__list">
             <li>
-              <a href={business.facebookUrl} rel="noreferrer" target="_blank">
+              <a href={business.facebookUrl} rel="noreferrer noopener" target="_blank">
                 Facebook
               </a>
             </li>
             <li>
-              <a href={business.tripadvisorUrl} rel="noreferrer" target="_blank">
+              <a href={business.tripadvisorUrl} rel="noreferrer noopener" target="_blank">
                 TripAdvisor
               </a>
             </li>
